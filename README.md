@@ -48,3 +48,7 @@ mongodb+srv://rkelm:<password>@cluster0.o9vz6.mongodb.net/<dbname>?retryWrites=t
 15. Adust query and resolvers to try to get posts, using try so that if it doesn't work, the entire server won't crash
 
 ![getPosts](Assets/Images/Code-creating/getPosts.png)
+...if you opne it up in local host and make sure your left side looks like this and hit play you should get something like this:
+![getposts](Assets/Images/Code-creating/getPosts2.png)
+
+16. Clean up folders/files by creating graphql folder
