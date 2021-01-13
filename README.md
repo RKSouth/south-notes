@@ -66,4 +66,9 @@ Creating a way for users to authenticate:
     } 
 
     to the index module exports in the resolvers folder 
-20. Build out the users file in the resolvers
+20. Build out the users file in the resolvers - some of it will just be pseudocoded for now
+21. npm install bcryptjs jsonwebtoken now that those are installed we can de structure from the args section of information that the user gave us - don't forget to import bcrypt
+22. create new user object, save user info to database, create new token (with payloads), and create a special secret (hidden in our config.js file)
+
+![usercreate](Assets/Images/Code-creating/usercreate.png)
+![secretkey](Assets/Images/Code-creating/secretkeysetup.png)
