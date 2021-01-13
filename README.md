@@ -30,3 +30,10 @@ To start:
 8. start a server and specify a port
 
 ![Resolver/Server](Assets/Images/Code-creating/resolversandserversetup.png)
+
+9. Type in node index to see your progress! :) Press play to see your database working
+10. Require mongoose, our ORM library. in the index.js next to where gql and apollo server are working
+11. The connect using mongoose by going to mongodb atlas dashboard, go to 'connect' grab your connection string 
+- creat config.js file and make a module.exports = { with your connection string here} and then make sure to gitignore your config file so one can see your password
+
+mongodb+srv://rkelm:<password>@cluster0.o9vz6.mongodb.net/<dbname>?retryWrites=true&w=majority

@@ -1,5 +1,6 @@
 const { ApolloServer } = require('apollo-server');
-const gql = require('graphql-tag')
+const gql = require('graphql-tag');
+const mongoose = requre('mongoose');
 
 // where all of query types go
 //always better to have the ! require field so we have more type safety
@@ -21,6 +22,9 @@ const server = new ApolloServer({
     typeDefs,
     resolvers
 });
+//go to mongodb atlas dashboard, go to 'connect' grab your connection string
+mongoose.connect()
+
 // now we can start our server and specify a port
 server.listen({ port: 5000})
 // returning a promise
