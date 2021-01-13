@@ -59,3 +59,10 @@ Creating a way for users to authenticate:
 18. in typeDefs.js add input RegisterInput and type Mutation 
 
 ![authdefs](Assets/Images/Code-creating/authTypeDefs.png)
+
+19. Add 
+ Mutation: {
+        ...usersResolvers.Mutation
+    } 
+
+    to the index module exports in the resolvers folder 
