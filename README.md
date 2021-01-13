@@ -66,3 +66,4 @@ Creating a way for users to authenticate:
     } 
 
     to the index module exports in the resolvers folder 
+20. Build out the users file in the resolvers
