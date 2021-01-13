@@ -40,3 +40,5 @@ mongodb+srv://rkelm:<password>@cluster0.o9vz6.mongodb.net/<dbname>?retryWrites=t
 12. rebuild index.js so it connects the localhost AND the database
 
 ![db/localhost](Assets/Images/Code-creating/localhostanddb.png)
+
+13. Create models folders - create user.js model, post.js model

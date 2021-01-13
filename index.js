@@ -1,7 +1,10 @@
+//dependency imports
 const { ApolloServer } = require('apollo-server');
 const gql = require('graphql-tag');
 const mongoose = require('mongoose');
 
+//relative imports
+const Post = require('./models/Post')
 const { MONGODB } =require('./config.js');
 
 // where all of query types go
@@ -26,7 +29,10 @@ const server = new ApolloServer({
 });
 //go to mongodb atlas dashboard, go to 'connect' grab your connection string and save it in a config.js file
 //make the file secret then export to here - make sure to use useNewUrlParser to avoid deprication warning
-mongoose.connect( MONGODB, {useNewUrlParser: true})
+// Warning when ran : (node:5064) DeprecationWarning: current Server Discovery and Monitoring engine is deprecated,
+// and will be removed in a future version. To use the new Server Discover and Monitoring engine, 
+//pass option { useUnifiedTopology: true } to the MongoClient constructor.
+mongoose.connect( MONGODB, {useNewUrlParser: true}, { useUnifiedTopology: true })
     .then(() => {
         console.log('MongoDB is connected')
             // now we can start our server and specify a port
