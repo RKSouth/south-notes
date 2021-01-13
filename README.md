@@ -34,7 +34,7 @@ To start:
 9. Type in node index to see your progress! :) Press play to see your database working
 10. Require mongoose, our ORM library. in the index.js next to where gql and apollo server are working
 11. The connect using mongoose by going to mongodb atlas dashboard, go to 'connect' grab your connection string 
-- creat config.js file and make a module.exports = { with your connection string here} and then make sure to gitignore your config file so one can see your password
+- create config.js file and make a module.exports = { with your connection string here} and then make sure to gitignore your config file so one can see your password
 
 mongodb+srv://rkelm:<password>@cluster0.o9vz6.mongodb.net/<dbname>?retryWrites=true&w=majority
 12. rebuild index.js so it connects the localhost AND the database
@@ -52,3 +52,10 @@ mongodb+srv://rkelm:<password>@cluster0.o9vz6.mongodb.net/<dbname>?retryWrites=t
 ![getposts](Assets/Images/Code-creating/getPosts2.png)
 
 16. Clean up folders/files by creating graphql folder that holds the typedefs and a resolvers folder which containes two seperate files for resolvers (for users and posts) -also include that in the index - you can now remove const Post = require('./models/Post') from the index.js and replace it with const resolvers = require('./graphql/resolvers')
+17. install nodemon - by running npm i -D nodemon and changing the scripts in package.json from tests to "start" : "nodemon index" - don't forget to save and check that it's working
+
+Creating a way for users to authenticate:
+
+18. in typeDefs.js add input RegisterInput and type Mutation 
+
+![authdefs](Assets/Images/Code-creating/authTypeDefs.png)
