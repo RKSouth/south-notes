@@ -37,3 +37,6 @@ To start:
 - creat config.js file and make a module.exports = { with your connection string here} and then make sure to gitignore your config file so one can see your password
 
 mongodb+srv://rkelm:<password>@cluster0.o9vz6.mongodb.net/<dbname>?retryWrites=true&w=majority
+12. rebuild index.js so it connects the localhost AND the database
+
+![db/localhost](Assets/Images/Code-creating/localhostanddb.png)
