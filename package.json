@@ -1,0 +1,25 @@
+{
+  "name": "facebook-clone",
+  "version": "1.0.0",
+  "description": "building a Facebook clone (kind of )",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RKSouth/facebook-clone.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RKSouth/facebook-clone/issues"
+  },
+  "homepage": "https://github.com/RKSouth/facebook-clone#readme",
+  "dependencies": {
+    "apollo-server": "^2.19.1",
+    "graphql": "^15.4.0",
+    "mongoose": "^5.11.11"
+  }
+}

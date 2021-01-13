@@ -14,4 +14,6 @@ Other: MongoDB (Atlas)
 
 To start: 
 0.1 Make sure you have a a cluster database set-up in the mongodb cloud website.
-1. In the terminal, npm -y
+1. In the terminal, npm init -y -this should create a package.json
+2. you will need to create a index.js and a .gitignore
+3. Install dependencies: npm install apollo-server graphql mongoose
