@@ -72,3 +72,9 @@ Creating a way for users to authenticate:
 
 ![usercreate](Assets/Images/Code-creating/usercreate.png)
 ![secretkey](Assets/Images/Code-creating/secretkeysetup.png)
+
+23. In order to test and make sure it's working, in your browser make sure it looks like this:
+
+![testuser](Assets/Images/Code-creating/testuser.png)
+
+24. The next step is to make suer we don't create two users with the same username, in order to do this we can use specific errors from apollo

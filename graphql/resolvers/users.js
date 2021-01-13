@@ -1,8 +1,10 @@
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
+const { UserInputError } = require('apollo-server')
 
 const { SECRET_KEY} = require("../../config");
 const User = require('../../models/User');
+
 
 module.exports = {
     Mutation: {
@@ -10,18 +12,25 @@ module.exports = {
         // parent gives you the result of what was the input of the last step, in some cases you can have multiple resolvers
         //implement resolver for the register and take in input
         //   register(parent, args, context, info){
-        register(_,{ registerInput: { username, email, password, confirmPassword}
-        } ,
-         context, info
-         ){
+         async register(_,{ registerInput: { username, email, password, confirmPassword}
+        }){
             // to do validate the user data
             // to do make sure user doesn't already exist
             // hash the password before we store it the database and create auth token
             // we use await here because bcrypt is asyncrouns
             password = await bcrypt.hash(password, 12);
 
-            // here is where we form our user object
+            // making sure we don't create 2 users with the same username
+            const user = await User.findOne({ username })
+            if(user){
+                throw new UserInputError('Username is already taken, please choose another', {
+                    errors: {
+                        username: 'This username is taken'
+                    }
+                })
+            }
 
+            // here is where we form our user object
             const newUser = new User({
                 email,
                 username,
