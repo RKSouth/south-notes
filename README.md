@@ -17,3 +17,5 @@ To start:
 1. In the terminal, npm init -y -this should create a package.json
 2. you will need to create a index.js and a .gitignore
 3. Install dependencies: npm install apollo-server graphql mongoose
+4. require ApolloServer and grahpql-tag in index.js  -in order to get syntax highlighting for graphql it's a good idea to install GraphQL for VSCode made by Kumar Harsh. 
+5. Create typeDefs
