@@ -11,14 +11,27 @@ const { MONGODB } =require('./config.js');
 //always better to have the ! require field so we have more type safety
 //notice use of back ticks
 const typeDefs = gql`
+    type Post{
+        id: ID!
+        body: String!
+        createdAt:String!
+        username:String!
+    }
     type Query{
-        sayHi: String!
+       getPosts: [Post]
     }
     `
     //processes some sort of logic
 const resolvers = {
    Query: {
-       sayHi: () => 'Hello World'
+      async getPosts() {
+          try{
+              const posts = await Post.find();
+              return posts;
+          } catch (err) {
+              throw new Error(err);
+          }
+      }
        }
    } 
 

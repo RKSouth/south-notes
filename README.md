@@ -42,3 +42,9 @@ mongodb+srv://rkelm:<password>@cluster0.o9vz6.mongodb.net/<dbname>?retryWrites=t
 ![db/localhost](Assets/Images/Code-creating/localhostanddb.png)
 
 13. Create models folders - create user.js model, post.js model
+14. create a  query for fetching all the posts from the database - use a dummy post to check your work in the mongdb collections section - make sure you have one called "posts"
+![Dummytext](Assets/Images/Code-creating/dummytext.png)
+
+15. Adust query and resolvers to try to get posts, using try so that if it doesn't work, the entire server won't crash
+
+![getPosts](Assets/Images/Code-creating/getPosts.png)
