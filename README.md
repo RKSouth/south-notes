@@ -51,4 +51,4 @@ mongodb+srv://rkelm:<password>@cluster0.o9vz6.mongodb.net/<dbname>?retryWrites=t
 ...if you opne it up in local host and make sure your left side looks like this and hit play you should get something like this:
 ![getposts](Assets/Images/Code-creating/getPosts2.png)
 
-16. Clean up folders/files by creating graphql folder
+16. Clean up folders/files by creating graphql folder that holds the typedefs and a resolvers folder which containes two seperate files for resolvers (for users and posts) -also include that in the index - you can now remove const Post = require('./models/Post') from the index.js and replace it with const resolvers = require('./graphql/resolvers')

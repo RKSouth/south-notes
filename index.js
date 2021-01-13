@@ -5,23 +5,10 @@ const mongoose = require('mongoose');
 
 //relative imports
 const typeDefs =require('./graphql/typeDefs');
-const Post = require('./models/Post')
+const resolvers = require('./graphql/resolvers');
 const { MONGODB } =require('./config.js');
 
 
-    //processes some sort of logic
-const resolvers = {
-   Query: {
-      async getPosts() {
-          try{
-              const posts = await Post.find();
-              return posts;
-          } catch (err) {
-              throw new Error(err);
-          }
-      }
-       }
-   } 
 
 // set up apollo server
 const server = new ApolloServer({

@@ -1,4 +1,4 @@
-const gql = require('apollo-server');
+const { gql } = require('apollo-server');
 
 // where all of query types go
 //always better to have the ! require field so we have more type safety
