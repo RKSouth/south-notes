@@ -118,4 +118,6 @@ Get your user login token in the html route and set to Bearer:
 
 36. Adding likes and comments by first adding them to the type post in the typeDefs, and creating a new type comment and a new type Like - you can refer back to the models to see what you need to put in the typeDefs - they should match, with the addition of an id.
 37. Then we need to add mutations to create a comment and like a post -make sure they match up with your intentions and that you are returning Post!
-38. Next we will create a comments.js file in the resolver folder - then import that new file to your index.js
+38. Next we will create a comments.js file in the resolver folder - then import that new file to your index.js this file will contain a mutation that checks the auth and creates a comment on a new a post. In order to check it make sure your localhost looks similar to the image below. If you get an auth error, you may need to log in again and get a new token. If you continue to get errors check to make sure your file paths are correct and you are requiring things in the right places.
+
+![checkcomment](Assets/Images/Code-creating/createcomment.png)

@@ -1,12 +1,13 @@
 const { UserInputError } = require('apollo-server');
 
+const checkAuth = require('../../util/check-auth')
 const Post = require("../../models/Post")
 
 module.exports = {
     Mutation: {
         createComment: async (_, { postId, body}, context) => {
              // we should be logged in here
-            const  {username } = checkAut(context);
+            const  {username } = checkAuth(context);
             // if someone makes an empty comment
             if(body.trim() === ''){
                 throw new UserInputError('Empty Comment not allowed', {
