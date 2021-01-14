@@ -130,4 +130,6 @@ commentId:"){
         body
     }
 }}
-and making sure you have auth bearer token correct
+and making sure you have auth bearer token correct.
+40. Adding likes to the posts: in posts create an async function for likePost -TEST IT IN THE BROWSER!
+<!-- STOPPED AT 1:56:58 -->
