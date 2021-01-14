@@ -91,3 +91,16 @@ Creating a way for users to authenticate:
             }
 26. next we will add a log in - make sure you have a seperate validation for log in in the validators file. Then in the typDefs under type Mutation add login as a type of mutation with a username string and a password string. we need to validate similarly to the way we validated for the user create. 
 <!-- https://www.youtube.com/watch?v=n1mdAPFq2Os att authenticatio middleware and create/deleteposts 1:12:52 -->
+27. Add post query and mutation to typedefs. This will allow us to look up posts and to create new posts.
+28. in typedefs, create  deletePost(postId: ID!): String! mutation in typedefs -deleting is mutating. Then you want to add the corelating resolvers to posts.js Make sure to include the same function name in the typedefs and instances if it does not work (throw and catch errors).
+29. Check to so if it is working by going to your browser and entering in:
+{
+  getPost(postId:"5fff6c3d601e560c04724310"){
+  id
+	body
+  createdAt
+  username    
+  }
+
+}
+...with the appropriate id number (gotten from your collection on atlas) and make sure when you hit play that no errors are returned
