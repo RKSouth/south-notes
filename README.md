@@ -104,3 +104,6 @@ Creating a way for users to authenticate:
 
 }
 ...with the appropriate id number (gotten from your collection on atlas) and make sure when you hit play that no errors are returned
+30. Add context argument in for apollo server in index.js and create new util file called check-auth.
+31. by requiring check-auth and calling  const user = checkAuth(context); in the mutation section of posts, this assures someone can't create a post without authorization. Also in the index of the resolvers folder don't forget to add another mutation
+32. Then we can create a new a post based off our model and save it. Don't forget to check and see if it actually works. 

@@ -2,7 +2,9 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
 const { UserInputError } = require('apollo-server')
 
-const { validateRegisterInput, validateLoginInput } = require('../../util/validators')
+const { validateRegisterInput, 
+        validateLoginInput
+     } = require('../../util/validators')
 const { SECRET_KEY} = require("../../config");
 const User = require('../../models/User');
 
@@ -24,21 +26,21 @@ module.exports = {
         //implement resolver for the register and take in input
         //   register(parent, args, context, info){
             async login(_, { username, password }) {
-                const {error, valid } = validateLoginInput(username, password);
+                const { errors, valid } = validateLoginInput(username, password);
                 //we need to throw an error of the valid is false in here too
                 if(!valid){
-                    throw new UserInputError('Errors' , {errors})
+                    throw new UserInputError('Errors' , { errors })
                 }
                 const user = await User.findOne({ username });
 
                 if(!user){
                     errors.general = 'user not found';
-                    throw new UserInputError('user not found', {errors});
+                    throw new UserInputError('user not found', { errors });
                 }
                 const match = await bcrypt.compare(password, user.password);
                 if(!match){
                     errors.general = 'wrong password';
-                    throw new UserInputError('wrong password', {errors});
+                    throw new UserInputError('wrong password', { errors });
                 }
                 // if the username and password are correct we need to issue them a token
                 const token = generateToken(user);
@@ -48,8 +50,9 @@ module.exports = {
                 ...res._doc,
                 id: res._id,
                 token
-            }
+            };
             },
+            
          async register(_,{ 
              registerInput: { username, email, password, confirmPassword}
         }
@@ -91,7 +94,7 @@ module.exports = {
 
             // create new token for our user
             // see generate token function above
-            const token = generateToken(res)
+            const token = generateToken(res);
 
             return {
                 ...res._doc,

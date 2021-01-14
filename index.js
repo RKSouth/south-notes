@@ -12,7 +12,9 @@ const { MONGODB } =require('./config.js');
 // set up apollo server
 const server = new ApolloServer({
     typeDefs,
-    resolvers
+    resolvers,
+    // for creating auth for a posts -allows us to access our request body in context
+    context: ({ req }) => ({ req })
 });
 //go to mongodb atlas dashboard, go to 'connect' grab your connection string and save it in a config.js file
 //make the file secret then export to here - make sure to use useNewUrlParser to avoid depriciation warning
