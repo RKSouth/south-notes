@@ -110,4 +110,7 @@ Creating a way for users to authenticate:
 Get your user login token in the html route and set to Bearer: 
 
 ![checkposts](Assets/Images/Code-creating/createpost.png)
-33. In order to get posts to show the latest version posted add .sort({createdAt: -1}) to the end of find posts in the resolver
+33. In order to get posts to show the latest version posted add .sort({createdAt: -1}) to the end of find posts in the resolver.
+35. At async deletePost function on post resolvers (remember it has already been created in a few other places) and check it in your local host to make sure it works:
+
+![checkdelete](Assets/Images/Code-creating/checkdeletepost.png)
