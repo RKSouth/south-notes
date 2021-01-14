@@ -2,9 +2,19 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
 const { UserInputError } = require('apollo-server')
 
-const { validateRegisterInput } = require('../../util/validators')
+const { validateRegisterInput, validateLoginInput } = require('../../util/validators')
 const { SECRET_KEY} = require("../../config");
 const User = require('../../models/User');
+
+function generateToken(user){
+  return jwt.sign({
+        id: user.id,
+        email: user.email,
+        username: user.username
+        // here is were we give it a secret -store in the config file as well
+    }, SECRET_KEY, { expiresIn: '1h' });
+
+}
 
 
 module.exports = {
@@ -13,6 +23,29 @@ module.exports = {
         // parent gives you the result of what was the input of the last step, in some cases you can have multiple resolvers
         //implement resolver for the register and take in input
         //   register(parent, args, context, info){
+            async login(_, { username, password }) {
+                const {error, valid } = validateLoginInput(username, password);
+                const user = await User.findOne({ username });
+
+                if(!user){
+                    errors.general = 'user not found';
+                    throw new UserInputError('user not found', {errors});
+                }
+                const match = await bcrypt.compare(password, user.password);
+                if(!match){
+                    errors.general = 'wrong password';
+                    throw new UserInputError('wrong password', {errors});
+                }
+                // if the username and password are correct we need to issue them a token
+                const token = generateToken(user);
+
+                
+            return {
+                ...res._doc,
+                id: res._id,
+                token
+            }
+            },
          async register(_,{ 
              registerInput: { username, email, password, confirmPassword}
         }
@@ -53,12 +86,8 @@ module.exports = {
             const res = await newUser.save()
 
             // create new token for our user
-            const token = jwt.sign({
-                id: res.id,
-                email: res.email,
-                username: res.username
-                // here is were we give it a secret -store in the config file as well
-            }, SECRET_KEY, { expiresIn: '1h' });
+            // see generate token function above
+            const token = generateToken(res)
 
             return {
                 ...res._doc,

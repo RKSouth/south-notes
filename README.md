@@ -89,3 +89,4 @@ Creating a way for users to authenticate:
             if(!valid){
                 throw new UserInputError('Errors', {errors});
             }
+26. next we will add a log in - make sure you have a seperate validation for log in in the validators file. Then in the typDefs under type Mutation add login as a type of mutation with a username string and a password string
