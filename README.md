@@ -110,7 +110,12 @@ Creating a way for users to authenticate:
 Get your user login token in the html route and set to Bearer: 
 
 ![checkposts](Assets/Images/Code-creating/createpost.png)
+
 33. In order to get posts to show the latest version posted add .sort({createdAt: -1}) to the end of find posts in the resolver.
 35. At async deletePost function on post resolvers (remember it has already been created in a few other places) and check it in your local host to make sure it works:
 
 ![checkdelete](Assets/Images/Code-creating/checkdeletepost.png)
+
+36. Adding likes and comments by first adding them to the type post in the typeDefs, and creating a new type comment and a new type Like - you can refer back to the models to see what you need to put in the typeDefs - they should match, with the addition of an id.
+37. Then we need to add mutations to create a comment and like a post -make sure they match up with your intentions and that you are returning Post!
+38. Next we will create a comments.js file in the resolver folder - then import that new file to your index.js

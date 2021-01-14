@@ -9,6 +9,20 @@ module.exports = gql`
         body: String!
         createdAt:String!
         username:String!
+        # exclamation point inside of array of array means the array needs to contain at least 1 element
+        comments: [Comment]!
+        likes: [Like]!
+    }
+    type Comment{
+        id: ID!
+        createdAt: String!
+        username: String!
+        body: String!
+    }
+    type Like{
+        id: ID!
+        createdAt: String!
+        username: String!
     }
     type User{
         id: ID!
@@ -32,8 +46,17 @@ module.exports = gql`
         login(username: String!,
         # here we are returning the user
         password: String!):User!
+        # editing the posts
         createPost(body: String!): Post!
         deletePost(postId: ID!): String!
+        # editing the comments
+        createComment(postId: String!, body: String!): Post!
+        # you can take the comment id but using post id will allow us to check if the post is still up or not
+        # you might have a mechanism if the post is deleted or not and if you check for the comment you might have a problem
+        deleteComment(postId: ID!, commentId: ID!): Post!
+        # for adjusting the likes
+        # there is no unlike mutation because the like button will work as a toggle
+        likePost(postId: ID!): Post!
     }
 
     # Do not delete below this line or else you have a very bad time
