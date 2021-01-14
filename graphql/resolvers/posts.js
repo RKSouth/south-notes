@@ -9,7 +9,10 @@ module.exports = {
     Query: {
        async getPosts() {
            try{
-               const posts = await Post.find();
+            //    in order to srt posts so the latest show up on top and the older ones on the bottom
+            // we just need to sort  by createdAt so instead of:
+            //    const posts = await Post.find();
+            const posts = await Post.find().sort({createdAt: -1})
                return posts;
            } catch (err) {
                throw new Error(err);
