@@ -47,12 +47,12 @@ module.exports = {
 
                 
             return {
-                ...res._doc,
-                id: res._id,
+                ...user._doc,
+                id: user._id,
                 token
             };
             },
-            
+
          async register(_,{ 
              registerInput: { username, email, password, confirmPassword}
         }
