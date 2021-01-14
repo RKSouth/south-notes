@@ -19,12 +19,16 @@ function generateToken(user){
 
 module.exports = {
     Mutation: {
-        //most of the time we will just args as part of the things we can get in our resolver arguements
+        //most of the time we will just args as part of the things we can get in our resolver arguments
         // parent gives you the result of what was the input of the last step, in some cases you can have multiple resolvers
         //implement resolver for the register and take in input
         //   register(parent, args, context, info){
             async login(_, { username, password }) {
                 const {error, valid } = validateLoginInput(username, password);
+                //we need to throw an error of the valid is false in here too
+                if(!valid){
+                    throw new UserInputError('Errors' , {errors})
+                }
                 const user = await User.findOne({ username });
 
                 if(!user){
