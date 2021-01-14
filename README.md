@@ -79,4 +79,13 @@ Creating a way for users to authenticate:
 
 24. The next step is to make suer we don't create two users with the same username, in order to do this we can use specific errors from apollo
 
-25. Now, time for validation -create a util folder
+25. Now, time for validation -create a util folder containing validators.js create validators for if username, if email, if password - then export it to the users resolvers file. Make sure you de-structure it and then call this function: 
+ const {valid, errors } = validateRegisterInput(
+                username, 
+                email, 
+                password, 
+                confirmPassword
+                 )
+            if(!valid){
+                throw new UserInputError('Errors', {errors});
+            }
