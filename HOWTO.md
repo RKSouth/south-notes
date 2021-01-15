@@ -162,4 +162,8 @@ and making sure you have auth bearer token correct.
 );
 54. Install Apollo dev tools for chrome and add it to your browser if you click f12 it works just like the tool at our server endpoint. 
 55. In your main file npm install react-router-dom semantic-ui-css semantic-ui-react
-56. In App.js import react router dom
+56. In App.js import files and set up routers appropriately -should look like this when done:
+
+![App](Assets/Images/Code-creating/AppUpdate-1.png)
+
+57. Inside src/pages create the corresponding pages to the routes you just created, meaning we will need a Home.js a Login.js and a Register.js. Inside src we will also need a components folder. It is important to create this set-up/framework ahead of time so that your files do not become too cumbersome or difficult to manage. 
