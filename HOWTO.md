@@ -144,4 +144,9 @@ and making sure you have auth bearer token correct.
 ## Front End -React!
 
 45. In terminal (in the main folder) type in npx create-react-app client. This will create our client-side of our application because the server side is done!
+46. Once that is done go into your newly created client/src folder and delete logo.svg, index.css, App.test.js remove everything in the APP.css. In App.js delete everything being returned inside the App() function and replace with: <div><h1>Welcome to my App</h1></div> and remove the import for the logo. In the index.js folder remove the import for index.css
+47. In the client/public folder in the index.html change the title to something other than react app.
+48. In your terminal, npm start then open an additional terminal and cd into the client folder and npm start so that you are running both the server and the front end at the same time.
+49. In order to prevent nodemon from restarting the server every time we make a change go to your outer package.json under scripts "serve": "node index", now you can restart your server-side terminal and instead of npm start run npm run serve.
+50. The next step is to 
 

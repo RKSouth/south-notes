@@ -4,6 +4,7 @@
   "description": "building a Facebook clone (kind of )",
   "main": "index.js",
   "scripts": {
+    "serve": "node index",
     "start": "nodemon index"
   },
   "repository": {
