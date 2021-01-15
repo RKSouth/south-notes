@@ -132,4 +132,8 @@ commentId:"){
 }}
 and making sure you have auth bearer token correct.
 40. Adding likes to the posts: in posts create an async function for likePost -TEST IT IN THE BROWSER!
+![likes](Assets/Images/Code-creating/likecomment.png)
 <!-- STOPPED AT 1:56:58 -->
+41. and type Subscription to type defs to get started on how to use subscriptions then in index we need something from apollo-server, called pub sub then we need to create a new instance const pubsub - new PubSub and pass it to the context inside the server context = ({req}) => ({ req, pubsub}) then in posts.js add a function called subscription that only takes in context, no parent and no argument. the context will be 'NEW_POST' we wll also need to add a a pubsub right after a new post is created so that tht person subscribing can see the new post. 
+42. In the index.js of the resolvers folder we will need to a new field, Subscription. Check and make sure it works
+43. In order to count likes and comments we are going to need to add a few things.

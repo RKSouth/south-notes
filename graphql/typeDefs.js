@@ -58,6 +58,8 @@ module.exports = gql`
         # there is no unlike mutation because the like button will work as a toggle
         likePost(postId: ID!): Post!
     }
-
+    type Subscription{
+        newPost: Post!
+    }
     # Do not delete below this line or else you have a very bad time
     `;

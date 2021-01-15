@@ -1,5 +1,5 @@
 //dependency imports
-const { ApolloServer } = require('apollo-server');
+const { ApolloServer, PubSub } = require('apollo-server');
 const mongoose = require('mongoose');
 
 //relative imports
@@ -7,14 +7,14 @@ const typeDefs =require('./graphql/typeDefs');
 const resolvers = require('./graphql/resolvers');
 const { MONGODB } =require('./config.js');
 
-
+const pubsub = new PubSub()
 
 // set up apollo server
 const server = new ApolloServer({
     typeDefs,
     resolvers,
     // for creating auth for a posts -allows us to access our request body in context
-    context: ({ req }) => ({ req })
+    context: ({ req }) => ({ req, pubsub })
 });
 //go to mongodb atlas dashboard, go to 'connect' grab your connection string and save it in a config.js file
 //make the file secret then export to here - make sure to use useNewUrlParser to avoid depriciation warning
