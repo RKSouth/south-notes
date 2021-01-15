@@ -156,3 +156,9 @@ and making sure you have auth bearer token correct.
 
 ![ApolloProvider](Assets/Images/Code-creating/ApolloProvider.png)
 
+53. In the src folder, in the index.js file add import ApolloProvider from './ApolloProvider' to your list of imports and remove app, and react change the reactDOM.render to look like : ReactDOM.render(
+ ApolloProvider,
+  document.getElementById('root')
+);
+54. Install Apollo dev tools for chrome and add it to your browser if you click f12 it works just like the tool at our server endpoint. 
+55. In your main file npm install react-router-dom semantic-ui-css semantic-ui-react
