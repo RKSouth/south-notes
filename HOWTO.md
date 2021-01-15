@@ -140,3 +140,8 @@ and making sure you have auth bearer token correct.
         likeCount: Int!
         commentCount: Int!
 44. And then in the index.js of the resolvers folder add yet another field called Post - every time something happens to a post now it run with through here. If we return the length of the parent.likes and the parent.comments then each time something happens to the post these will also show the count of likes and comments.
+
+## Front End -React!
+
+45. In terminal (in the main folder) type in npx create-react-app client. This will create our client-side of our application because the server side is done!
+
