@@ -12,6 +12,8 @@ module.exports = gql`
         # exclamation point inside of array of array means the array needs to contain at least 1 element
         comments: [Comment]!
         likes: [Like]!
+        likeCount: Int!
+        commentCount: Int!
     }
     type Comment{
         id: ID!

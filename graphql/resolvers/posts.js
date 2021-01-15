@@ -1,4 +1,5 @@
 const {AuthenticationError, UserInputError } = require('apollo-server');
+const { argsToArgsConfig } = require('graphql/type/definition');
 
 const Post = require('../../models/Post');
 const checkAuth = require('../../util/check-auth');
@@ -39,6 +40,10 @@ module.exports = {
             // and we need to get that token and then decode it and get info from it 
             //and make sure that the user is authenticated and then create the post
             const user = checkAuth(context);
+            // if the body of the post is empty
+            if(argsToArgsConfig.body.trim() === ''){
+                throw new Error('Post body must not be empty')
+            }
             console.log(user)
 // these come from the post model
             const newPost = new Post({
