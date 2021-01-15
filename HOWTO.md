@@ -162,3 +162,4 @@ and making sure you have auth bearer token correct.
 );
 54. Install Apollo dev tools for chrome and add it to your browser if you click f12 it works just like the tool at our server endpoint. 
 55. In your main file npm install react-router-dom semantic-ui-css semantic-ui-react
+56. In App.js import react router dom
