@@ -19,14 +19,14 @@ function Home() {
 <HomeMenuBar/>
         </div>
         <h1>Recent Posts</h1>
-        <Grid columns={3} divided>
+        <Grid columns={3} >
     <Grid.Row>
     <Grid.Row>    </Grid.Row>
       {loading ? (
           <h1> Loading posts...</h1>
       ) : ( 
           posts && posts.map( post => (
-              <Grid.Column key = {post.id}>
+              <Grid.Column key = {post.id} style={{ marginBottom: 40}}>
                   <PostCard post = {post}/>
               </Grid.Column>
           ) )

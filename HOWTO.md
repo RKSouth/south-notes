@@ -90,12 +90,14 @@ Creating a way for users to authenticate:
             if(!valid){
                 throw new UserInputError('Errors', {errors});
             }`
+
 26. next we will add a log in - make sure you have a seperate validation for log in in the validators file. Then in the typDefs under type Mutation add login as a type of mutation with a username string and a password string. we need to validate similarly to the way we validated for the user create. 
 <!-- https://www.youtube.com/watch?v=n1mdAPFq2Os att authenticatio middleware and create/deleteposts 1:12:52 -->
 27. Add post query and mutation to typedefs. This will allow us to look up posts and to create new posts.
 28. in typedefs, create  deletePost(postId: ID!): String! mutation in typedefs -deleting is mutating. Then you want to add the corelating resolvers to posts.js Make sure to include the same function name in the typedefs and instances if it does not work (throw and catch errors).
 29. Check to so if it is working by going to your browser and entering in:
-{
+
+`{
   getPost(postId:"5fff6c3d601e560c04724310"){
   id
 	body
@@ -103,7 +105,8 @@ Creating a way for users to authenticate:
   username    
   }
 
-}
+}`
+
 ...with the appropriate id number (gotten from your collection on atlas) and make sure when you hit play that no errors are returned
 30. Add context argument in for apollo server in index.js and create new util file called check-auth.
 31. by requiring check-auth and calling  const user = checkAuth(context); in the mutation section of posts, this assures someone can't create a post without authorization. Also in the index of the resolvers folder don't forget to add another mutation
@@ -161,10 +164,13 @@ and making sure you have auth bearer token correct.
 
 ![ApolloProvider](Assets/Images/Code-creating/ApolloProvider.png)
 
-53. In the src folder, in the index.js file add import ApolloProvider from './ApolloProvider' to your list of imports and remove app, and react change the reactDOM.render to look like : ReactDOM.render(
+53. In the src folder, in the index.js file add import ApolloProvider from './ApolloProvider' to your list of imports and remove app, and react change the reactDOM.render to look like :
+
+ `ReactDOM.render(
  ApolloProvider,
   document.getElementById('root')
-);
+);`
+
 54. Install Apollo dev tools for chrome and add it to your browser if you click f12 it works just like the tool at our server endpoint. 
 55. In your main file npm install react-router-dom semantic-ui-css semantic-ui-react
 56. In App.js import files and set up routers appropriately -should look like this when done:
@@ -236,3 +242,9 @@ We are now getting posts and setting them to an alias of posts.
 ![HomePageReturn](Assets/Images/Code-creating/HomePageReturn.png)
 
 77. import PostCard.js from components into Home page and then create the file. Copy paste from the login page and then select the word "login" from anywhere on the page and hit ctrl+shift+l to change it PostCard.
+78. In PostCard.ks you will want to `import { Card, Icon, Label, Image} from 'semantic-ui-react'` at the top of the page.
+79. Inside your parenthesis of the function PostCard you are going to want to de structure your post `{post:{ body , createdAt, id, username, likeCount, commentCount, likes}}`
+80. Choose a card from  the Semantic UI react site to copy into your return section. If you want to use the image, you will want to drag it up from it's home and put in the search bar -this will give you an http to replace png file with in the src section.
+81. replace the card.header name, in our case molly thomas, with {username} in order to get it to display the username.
+82. in order to formant the iso string to go into the meta data we will need to install moment into the client side of our folder and them import moment from 'moment'. This will allow us to pass `{moment(createdAt).fromNow()}` into our meta data which will tell us how long ago something happened. 
+83. In the `<Card.Description>' section we will want to fill the body of the card.
