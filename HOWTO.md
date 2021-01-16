@@ -183,3 +183,10 @@ and making sure you have auth bearer token correct.
             as ={Link}
               to="/"
     in order to specify where the link is going.
+
+65. Add color to active link by adding color = "orange".
+66. In order for color to link up with active page correctly add:
+const pathname = window.location.pathname;
+const path = pathname === '/' ? 'home' : pathname.substr(1);
+
+above the useState call and set usestate to path

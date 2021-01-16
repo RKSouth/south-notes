@@ -4,9 +4,12 @@ import {Link } from 'react-router-dom'
 
 function MenuBar() {
 //   state = { activeItem: 'bio' }
-const [activeItem, setActiveItem] = useState('')
 
+// in order for the links and the menubar to always link up
+const pathname = window.location.pathname;
+const path = pathname === '/' ? 'home' : pathname.substr(1);
 
+const [activeItem, setActiveItem] = useState(path)
 //   handleItemClick = (e, { name }) => setState({ activeItem: name })
 const handleItemClick = (e, { name }) => setActiveItem(name);
 
@@ -16,7 +19,7 @@ const handleItemClick = (e, { name }) => setActiveItem(name);
     // const { activeItem } = state
 
     // return (
-        <Menu text>
+        <Menu text size ="massive" color="green">
         <Menu.Item header>Rachael-Book</Menu.Item>
         <Menu.Item
           name='home'
