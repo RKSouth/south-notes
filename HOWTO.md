@@ -217,3 +217,11 @@ const FETCH_POSTS_QUERY = gql`
     }
 
     this will console.log our data and show us it's coming in.
+71. Now we can de-structure our data by changing our call to:
+const { loading, data: { getPosts: posts } } = useQuery(FETCH_POSTS_QUERY);
+We are now getting posts and setting them to an alias of posts.
+72. In order to display our posts we should get some sort of grid from semantic ui react (make sure it is semantic ui react). Clean it up so you only have one column and 1 row.
+73. Now cut the grid column and inside that row we want to check and see if we are loading by using a terinary operator. { loading ? ( <h1>Loading Posts</h1>) : ( HERE is where iterate through our posts)}
+74. BUT FIRST! Before we display our posts, we need to check if it's returning anything, if it's truthy. so we runs posts && posts.map(post => (HERE is where iterate through our posts))
+75. Past the grid columns back in and we will create another component called postcards inside the of the grid columns. So we creeate <PostCard> and then we pass it the value of posts (or is it post?) by setting it equal to <PostCard post={post}> 
+76. When we are iterating through it's important to pay a key value to our top most componemnt in the <Grid.Column > insert key ={post.id} 
