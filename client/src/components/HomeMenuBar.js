@@ -32,7 +32,7 @@ const handleItemClick = (e, { name }) => setActiveItem(name);
             active={activeItem === 'creator'}
             onClick={handleItemClick}
             as ={Link}
-            to="/create"
+            to="/creator"
         />
         <Menu.Item
           name='fun'
