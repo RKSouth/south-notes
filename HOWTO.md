@@ -80,7 +80,8 @@ Creating a way for users to authenticate:
 24. The next step is to make suer we don't create two users with the same username, in order to do this we can use specific errors from apollo
 
 25. Now, time for validation -create a util folder containing validators.js create validators for if username, if email, if password - then export it to the users resolvers file. Make sure you de-structure it and then call this function: 
- const {valid, errors } = validateRegisterInput(
+
+ `const {valid, errors } = validateRegisterInput(
                 username, 
                 email, 
                 password, 
@@ -88,7 +89,7 @@ Creating a way for users to authenticate:
                  )
             if(!valid){
                 throw new UserInputError('Errors', {errors});
-            }
+            }`
 26. next we will add a log in - make sure you have a seperate validation for log in in the validators file. Then in the typDefs under type Mutation add login as a type of mutation with a username string and a password string. we need to validate similarly to the way we validated for the user create. 
 <!-- https://www.youtube.com/watch?v=n1mdAPFq2Os att authenticatio middleware and create/deleteposts 1:12:52 -->
 27. Add post query and mutation to typedefs. This will allow us to look up posts and to create new posts.
@@ -121,7 +122,9 @@ Get your user login token in the html route and set to Bearer:
 38. Next we will create a comments.js file in the resolver folder - then import that new file to your index.js this file will contain a mutation that checks the auth and creates a comment on a new a post. In order to check it make sure your localhost looks similar to the image below. If you get an auth error, you may need to log in again and get a new token. If you continue to get errors check to make sure your file paths are correct and you are requiring things in the right places.
 
 ![checkcomment](Assets/Images/Code-creating/createcomment.png)
-39. Add delete comment function make sure it has errors for if a user tries to delete another persons comment (not 100% neccesary but a good check anyway) aaaand if the post doesn't work check to make sure it worked in the browser. by typing in mutation { deleteComment(postId:""
+39. Add delete comment function make sure it has errors for if a user tries to delete another persons comment (not 100% neccesary but a good check anyway) aaaand if the post doesn't work check to make sure it worked in the browser. by typing in mutation 
+
+`{ deleteComment(postId:""
 commentId:"){
     id 
     comments{
@@ -129,12 +132,14 @@ commentId:"){
         username
         body
     }
-}}
+}}`
 and making sure you have auth bearer token correct.
 40. Adding likes to the posts: in posts create an async function for likePost -TEST IT IN THE BROWSER!
+
 ![likes](Assets/Images/Code-creating/likecomment.png)
 <!-- STOPPED AT 1:56:58 -->
-41. and type Subscription to type defs to get started on how to use subscriptions then in index we need something from apollo-server, called pub sub then we need to create a new instance const pubsub - new PubSub and pass it to the context inside the server context = ({req}) => ({ req, pubsub}) then in posts.js add a function called subscription that only takes in context, no parent and no argument. the context will be 'NEW_POST' we wll also need to add a a pubsub right after a new post is created so that tht person subscribing can see the new post. 
+
+41. and type Subscription to type defs to get started on how to use subscriptions then in index we need something from apollo-server, called pub sub then we need to create a new instance const pubsub - new PubSub and pass it to the context inside the server `context = ({req}) => ({ req, pubsub})` then in posts.js add a function called subscription that only takes in context, no parent and no argument. the context will be 'NEW_POST' we wll also need to add a a pubsub right after a new post is created so that tht person subscribing can see the new post. 
 42. In the index.js of the resolvers folder we will need to a new field, Subscription. Check and make sure it works
 43. In order to count likes and comments we are going to need to add a few things. We can calculate that on the client or on the server - to do it on the server: add, in typedefs to type Post :     
         likeCount: Int!
@@ -143,7 +148,7 @@ and making sure you have auth bearer token correct.
 
 ## Front End -React!
 
-45. In terminal (in the main folder) type in npx create-react-app client. This will create our client-side of our application because the server side is done!
+45. In terminal (in the main folder) type in `npx create-react-app client`. This will create our client-side of our application because the server side is done!
 46. Once that is done go into your newly created client/src folder and delete logo.svg, index.css, App.test.js remove everything in the APP.css. In App.js delete everything being returned inside the App() function and replace with: 
 `<div><h1>Welcome to my App</h1></div>` and remove the import for the logo. In the index.js folder remove the import for index.css
 47. In the client/public folder in the index.html change the title to something other than react app.
@@ -170,7 +175,7 @@ and making sure you have auth bearer token correct.
 58. Inside of these pages you will need a function with the page name that returns div, an export default (function name) and an import React
 59. Make sure to import your newly created pages to the App.ks file At this point you should get a blank page.
 60. Go to Semantic UI's website and select an easy to you use menu. Then create a component file to hold your newly selected (copied ) menu bar. Make sure you went to Semantic UI react or code will be wacky. 
-61. There are several changes you will want to make to your menu bar items. Please note carefully the commented out items and the things that have been changed. Also you can remove any reference to this. because these are only used for class based items and since we romved class we should remove this as well.
+61. There are several changes you will want to make to your menu bar items. Please note carefully the commented out items and the things that have been changed. Also you can remove any reference to this. because these are only used for class based items and since we removed class we should remove this as well.
 
 ![Menu](Assets/Images/Code-creating/menuedits.png)
 
@@ -178,10 +183,10 @@ and making sure you have auth bearer token correct.
 
 <!-- https://www.youtube.com/watch?v=n1mdAPFq2Os -->
 
-63. Add import { Container } from "semantic-ui-react" to top of app.js -containers are important and wrap everything in the container component
+63. Add `import { Container } from "semantic-ui-react"` to top of app.js -containers are important and wrap everything in the container component
 64. In order to get links to work in react you need to import import {Link } from 'react-router-dom' into your menu bar and include:
-            as ={Link}
-              to="/"
+           ` as ={Link}
+              to="/"`
     in order to specify where the link is going.
 
 65. Add color to active link by adding color = "orange".
@@ -198,7 +203,7 @@ above the useState call and set use state to path. That way it always update
 67. In the Home page import { useQuery } from "@apollo/react-hooks" and import gql from 'graphql-tag';
 68. In the client folder npm install graphql graphql-tag then in the home page import gql from 'graphql'
 69. Before export default home build this function to get posts:
-const FETCH_POSTS_QUERY = gql`
+`const FETCH_POSTS_QUERY = gql``
 {getPosts{
     id body createdAt username likeCount
     likes{
@@ -209,8 +214,10 @@ const FETCH_POSTS_QUERY = gql`
         id username createdAt body
     }
 }
-}`
-70. Above the return in the Home page add   `const { loading, data } = useQuery(FETCH_POSTS_QUERY);
+}``
+70. Above the return in the Home page add:
+
+  `const { loading, data } = useQuery(FETCH_POSTS_QUERY);
 
     if(data){
         console.log(data)
