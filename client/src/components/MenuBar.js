@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Grid, Menu, Segment } from 'semantic-ui-react'
+import {Link } from 'react-router-dom'
 
 function MenuBar() {
 //   state = { activeItem: 'bio' }
@@ -15,41 +16,37 @@ const handleItemClick = (e, { name }) => setActiveItem(name);
     // const { activeItem } = state
 
     // return (
-      <Grid>
-        <Grid.Column width={4}>
-          <Menu fluid vertical tabular>
-            <Menu.Item
-              name='home'
-              active={activeItem === 'home'}
-              onClick={handleItemClick}
-            />
-            <Menu.Item
-              name='login'
-              active={activeItem === 'login'}
-              onClick={handleItemClick}
-            />
-            <Menu.Item
-              name='register'
-              active={activeItem === 'register'}
-              onClick={handleItemClick}
-            />
-            {/* <Menu.Item
-              name='links'
-              active={activeItem === 'links'}
-              onClick={handleItemClick}
-            /> */}
-          </Menu>
-        </Grid.Column>
+        <Menu text>
+        <Menu.Item header>Rachael-Book</Menu.Item>
+        <Menu.Item
+          name='home'
+          active={activeItem === 'home'}
+          onClick={handleItemClick}
+          as ={Link}
+          to="/"
+        />
+        <Menu.Menu position="right">
+        <Menu.Item
+       name='login'
+       active={activeItem === 'login'}
+       onClick={handleItemClick}
+       as ={Link}
+       to="/login"
+        />
+        <Menu.Item
+          name='register'
+          active={activeItem === 'register'}
+          onClick={handleItemClick}
+          as ={Link}
+          to="/register"
+        />
+        </Menu.Menu>
+      </Menu>
 
-        <Grid.Column stretched width={12}>
-          <Segment>
-            This is an stretched grid column. This segment will always match the
-            tab height
-          </Segment>
-        </Grid.Column>
-      </Grid>
+
     )
   
 }
 
 export default MenuBar
+

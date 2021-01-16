@@ -175,3 +175,11 @@ and making sure you have auth bearer token correct.
 ![Menu](Assets/Images/Code-creating/menuedits.png)
 
 62. The next step is to add the menu bar to the main page, import in the App.js and then include in the top of the routes. We want it to show up on every page.
+
+<!-- https://www.youtube.com/watch?v=n1mdAPFq2Os -->
+
+63. Add import { Container } from "semantic-ui-react" to top of app.js -containers are important and wrap everything in the container component
+64. In order to get links to work in react you need to import import {Link } from 'react-router-dom' into your menu bar and include:
+            as ={Link}
+              to="/"
+    in order to specify where the link is going.
