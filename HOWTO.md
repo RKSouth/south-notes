@@ -145,7 +145,7 @@ and making sure you have auth bearer token correct.
 
 45. In terminal (in the main folder) type in npx create-react-app client. This will create our client-side of our application because the server side is done!
 46. Once that is done go into your newly created client/src folder and delete logo.svg, index.css, App.test.js remove everything in the APP.css. In App.js delete everything being returned inside the App() function and replace with: 
-'<div><h1>Welcome to my App</h1></div>' and remove the import for the logo. In the index.js folder remove the import for index.css
+`<div><h1>Welcome to my App</h1></div>` and remove the import for the logo. In the index.js folder remove the import for index.css
 47. In the client/public folder in the index.html change the title to something other than react app.
 48. In your terminal, npm start then open an additional terminal and cd into the client folder and npm start so that you are running both the server and the front end at the same time.
 49. In order to prevent nodemon from restarting the server every time we make a change go to your outer package.json under scripts "serve": "node index", now you can restart your server-side terminal and instead of npm start run npm run serve.
@@ -210,18 +210,22 @@ const FETCH_POSTS_QUERY = gql`
     }
 }
 }`
-70. Above the return in the Home page add   const { loading, data } = useQuery(FETCH_POSTS_QUERY);
+70. Above the return in the Home page add   `const { loading, data } = useQuery(FETCH_POSTS_QUERY);
 
     if(data){
         console.log(data)
-    }
+    }`
 
     this will console.log our data and show us it's coming in.
 71. Now we can de-structure our data by changing our call to:
-const { loading, data: { getPosts: posts } } = useQuery(FETCH_POSTS_QUERY);
+`const { loading, data: { getPosts: posts } } = useQuery(FETCH_POSTS_QUERY);`
 We are now getting posts and setting them to an alias of posts.
 72. In order to display our posts we should get some sort of grid from semantic ui react (make sure it is semantic ui react). Clean it up so you only have one column and 1 row.
-73. Now cut the grid column and inside that row we want to check and see if we are loading by using a terinary operator. { loading ? ( <h1>Loading Posts</h1>) : ( HERE is where iterate through our posts)}
+73. Now cut the grid column and inside that row we want to check and see if we are loading by using a terinary operator. `{ loading ? ( <h1>Loading Posts</h1>) : ( HERE is where iterate through our posts)}`
 74. BUT FIRST! Before we display our posts, we need to check if it's returning anything, if it's truthy. so we runs posts && posts.map(post => (HERE is where iterate through our posts))
-75. Past the grid columns back in and we will create another component called postcards inside the of the grid columns. So we creeate <PostCard> and then we pass it the value of posts (or is it post?) by setting it equal to <PostCard post={post}> 
-76. When we are iterating through it's important to pay a key value to our top most componemnt in the <Grid.Column > insert key ={post.id} 
+75. Past the grid columns back in and we will create another component called postcards inside the of the grid columns. So we creeate `<PostCard>` and then we pass it the value of posts (or is it post?) by setting it equal to `<PostCard post={post}> `
+76. When we are iterating through it's important to pay a key value to our top most componemnt in the `<Grid.Column > insert key ={post.id}` Some steps may have been skipped but the general idea is the code should look something like the image below when done:
+
+![HomePageReturn](Assets/Images/Code-creating/HomePageReturn.png)
+
+77. import PostCard.js from components into Home page and then create the file. Copy paste from the login page and then select the word "login" from anywhere on the page and hit ctrl+shift+l to change it PostCard.
