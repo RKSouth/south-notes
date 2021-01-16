@@ -168,3 +168,10 @@ and making sure you have auth bearer token correct.
 
 57. Inside src/pages create the corresponding pages to the routes you just created, meaning we will need a Home.js a Login.js and a Register.js. Inside src we will also need a components folder. It is important to create this set-up/framework ahead of time so that your files do not become too cumbersome or difficult to manage. 
 58. Inside of these pages you will need a function with the page name that returns div, an export default (function name) and an import React
+59. Make sure to import your newly created pages to the App.ks file At this point you should get a blank page.
+60. Go to Semantic UI's website and select an easy to you use menu. Then create a component file to hold your newly selected (copied ) menu bar. Make sure you went to Semantic UI react or code will be wacky. 
+61. There are several changes you will want to make to your menu bar items. Please note carefully the commented out items and the things that have been changed. Also you can remove any reference to this. because these are only used for class based items and since we romved class we should remove this as well.
+
+![Menu](Assets/Images/Code-creating/menuedits.png)
+
+62. The next step is to add the menu bar to the main page, import in the App.js and then include in the top of the routes. We want it to show up on every page.
