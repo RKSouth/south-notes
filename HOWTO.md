@@ -192,3 +192,28 @@ const path = pathname === '/' ? 'home' : pathname.substr(1);
 above the useState call and set use state to path. That way it always update
 
 <!-- time 2:33> 53 -->
+
+### Displaying Posts
+
+67. In the Home page import { useQuery } from "@apollo/react-hooks" and import gql from 'graphql-tag';
+68. In the client folder npm install graphql graphql-tag then in the home page import gql from 'graphql'
+69. Before export default home build this function to get posts:
+const FETCH_POSTS_QUERY = gql`
+{getPosts{
+    id body createdAt username likeCount
+    likes{
+        username 
+    }
+    commentCount
+    comments{
+        id username createdAt body
+    }
+}
+}`
+70. Above the return in the Home page add   const { loading, data } = useQuery(FETCH_POSTS_QUERY);
+
+    if(data){
+        console.log(data)
+    }
+
+    this will console.log our data and show us it's coming in.
