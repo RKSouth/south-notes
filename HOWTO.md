@@ -245,6 +245,10 @@ We are now getting posts and setting them to an alias of posts.
 78. In PostCard.ks you will want to `import { Card, Icon, Label, Image} from 'semantic-ui-react'` at the top of the page.
 79. Inside your parenthesis of the function PostCard you are going to want to de structure your post `{post:{ body , createdAt, id, username, likeCount, commentCount, likes}}`
 80. Choose a card from  the Semantic UI react site to copy into your return section. If you want to use the image, you will want to drag it up from it's home and put in the search bar -this will give you an http to replace png file with in the src section.
-81. replace the card.header name, in our case molly thomas, with {username} in order to get it to display the username.
+81. replace the card.header name, in our case molly thomas, with `{username}` in order to get it to display the username.
 82. in order to formant the iso string to go into the meta data we will need to install moment into the client side of our folder and them import moment from 'moment'. This will allow us to pass `{moment(createdAt).fromNow()}` into our meta data which will tell us how long ago something happened. 
 83. In the `<Card.Description>' section we will want to fill the body of the card.
+84. If you want to remove the 'ago' from the display we can set fromNow to true as it is auto set to false and this will make it go away. To allow the card to take up more space simply add the word fluid `<Card>` -> `<Card fluid>`
+85. In order to to turn the time elapsed (the meta data) into a link to th post itself  ` <Card.Meta>{moment(createdAt).fromNow(true)}</Card.Meta>` -> `      <Card.Meta as= {Link} to={`/posts/${id}`}>{moment(createdAt).fromNow(true)}</Card.Meta>` and don't forget to import Link from react-router-dom. For the moment it won't lead anywhere -more exciting things to come!!
+86.
+
