@@ -167,3 +167,4 @@ and making sure you have auth bearer token correct.
 ![App](Assets/Images/Code-creating/AppUpdate-1.png)
 
 57. Inside src/pages create the corresponding pages to the routes you just created, meaning we will need a Home.js a Login.js and a Register.js. Inside src we will also need a components folder. It is important to create this set-up/framework ahead of time so that your files do not become too cumbersome or difficult to manage. 
+58. Inside of these pages you will need a function with the page name that returns div, an export default (function name) and an import React
