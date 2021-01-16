@@ -1,10 +1,16 @@
 import React from 'react'
-import { Card, Icon, Label, Image} from 'semantic-ui-react'
+import { Card, Icon, Label, Button, Image} from 'semantic-ui-react'
 import moment from 'moment'
 import {Link} from "react-router-dom"
 
 function PostCard({post:{ body , createdAt, id, username, likeCount, commentCount, likes} }) {
-   
+   function likePost(){
+       console.log('like post')
+   }
+
+function commentOnPost(){
+    console.log('comments');
+}
     return (
         <Card fluid>
         <Card.Content>
@@ -20,14 +26,26 @@ function PostCard({post:{ body , createdAt, id, username, likeCount, commentCoun
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          {/* <div className='ui two buttons'>
-            <Button basic color='green'>
-              Approve
-            </Button>
-            <Button basic color='red'>
-              Decline
-            </Button>
-          </div> */}
+        <div>
+    <Button as='div' labelPosition='right' onClick={likePost}>
+      <Button color='green' basic>
+        <Icon name='bolt' />
+        
+      </Button>
+      <Label as='a' basic color='green' pointing='left'>
+        {likeCount}
+      </Label>
+    </Button>
+    <Button as='div' labelPosition='right'onClick={commentOnPost}>
+      <Button basic color='black'>
+        <Icon name='comments outline' />
+       
+      </Button>
+      <Label  basic color='black' pointing='left'>
+       {commentCount}
+      </Label>
+    </Button>
+  </div>
         </Card.Content>
       </Card>
     )

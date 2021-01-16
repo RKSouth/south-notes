@@ -18,10 +18,12 @@ function Home() {
 <h1>Home Page</h1>
 <HomeMenuBar/>
         </div>
-        <h1>Recent Posts</h1>
+        <Grid.Row className="page-title">
+            <h1>Recent Posts</h1>  
+        </Grid.Row>
+     
         <Grid columns={3} >
     <Grid.Row>
-    <Grid.Row>    </Grid.Row>
       {loading ? (
           <h1> Loading posts...</h1>
       ) : ( 
