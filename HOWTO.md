@@ -189,4 +189,6 @@ and making sure you have auth bearer token correct.
 const pathname = window.location.pathname;
 const path = pathname === '/' ? 'home' : pathname.substr(1);
 
-above the useState call and set usestate to path
+above the useState call and set use state to path. That way it always update
+
+<!-- time 2:33> 53 -->
