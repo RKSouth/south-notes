@@ -250,5 +250,7 @@ We are now getting posts and setting them to an alias of posts.
 83. In the `<Card.Description>' section we will want to fill the body of the card.
 84. If you want to remove the 'ago' from the display we can set fromNow to true as it is auto set to false and this will make it go away. To allow the card to take up more space simply add the word fluid `<Card>` -> `<Card fluid>`
 85. In order to to turn the time elapsed (the meta data) into a link to th post itself  ` <Card.Meta>{moment(createdAt).fromNow(true)}</Card.Meta>` -> `      <Card.Meta as= {Link} to={`/posts/${id}`}>{moment(createdAt).fromNow(true)}</Card.Meta>` and don't forget to import Link from react-router-dom. For the moment it won't lead anywhere -more exciting things to come!!
-86. In order to make like and comment buttons -we will need to go to the semantic ui react site again
+86. In order to make like and comment buttons -we will need to go to the semantic ui react site again. 
+
+<!-- stopped at 2:52   Did not include notes on building buttons ect.-->
 
