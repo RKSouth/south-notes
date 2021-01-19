@@ -253,4 +253,5 @@ We are now getting posts and setting them to an alias of posts.
 86. In order to make like and comment buttons -we will need to go to the semantic ui react site again. 
 
 <!-- stopped at 2:52   Did not include notes on building buttons ect.-->
-
+LOG IN AND REGISTER PAGE
+Add noValidate to the beginning of the FORM ON Register page because HTML5 by default tries to validate email on forms.
