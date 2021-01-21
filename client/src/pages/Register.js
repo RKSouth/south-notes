@@ -5,7 +5,8 @@ import gql from 'graphql-tag'
 
 
 
-function Register() {
+
+function Register(props) {
   const [errors, setErrors] = useState({});
     const [values, setValues] = useState({
         username: '',
@@ -20,8 +21,9 @@ function Register() {
     }
 
     const [addUser, { loading }] = useMutation(REGISTER_USER, {
-        update(proxy, result){
+        update(_, result){
             console.log(result)
+            props.history.push('/')
         },
         onError(err){
           console.log(err.graphQLErrors[0].extensions.exception.errors);
@@ -47,12 +49,14 @@ function Register() {
                 name="username"
                 type="text"
                 value= {values.username}
+                error= {errors.username ? true : false}
                 onChange={onChange}/>
              <Form.Input
                 label = "Email"
                 placeholder="Email.."
                 name="email"
                 value= {values.email}
+                error= {errors.email ? true : false}
                 type="email"
                 onChange={onChange}/>
              <Form.Input
@@ -61,6 +65,7 @@ function Register() {
                 name="password"
                 type="password"
                 value= {values.password}
+                error= {errors.password ? true : false}
                 onChange={onChange}/>
                  <Form.Input
                 label = "Confirm Password"
@@ -68,6 +73,7 @@ function Register() {
                 name="confirmPassword"
                 type="password"
                 value= {values.confirmPassword}
+                error= {errors.confirmPassword ? true : false}
                 onChange={onChange}/>
                 <Button type="submit" primary>
                     Submit
