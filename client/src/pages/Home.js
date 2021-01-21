@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Image } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import { useQuery } from "@apollo/react-hooks";
 import gql from 'graphql-tag';
 
@@ -7,8 +7,8 @@ import PostCard from './../components/PostCard'
 import HomeMenuBar from './../components/HomeMenuBar'
 
 function Home() {
-    const { loading, data: { getPosts: posts } } = useQuery(FETCH_POSTS_QUERY);
-
+    // const { loading, data: { getPosts: posts } } = useQuery(FETCH_POSTS_QUERY);
+    const { loading, data: { getPosts: posts } = {} } = useQuery(FETCH_POSTS_QUERY);
     // if(data){
     //     console.log(data)
     // }
