@@ -1,4 +1,4 @@
-import React, { useReducer, createContext } from 'core-js/library/fn/reflect/es7/metadata'
+import React, { useReducer, createContext } from 'react'
 
 const AuthContext = createContext({
     user: null,
@@ -43,7 +43,7 @@ function AuthProvider(props){
     }
 
     return (
-        <AuthContext.AuthProvider
+        <AuthContext.Provider
         value={{yser: state.user, login, logout}}
         {...props}
         />

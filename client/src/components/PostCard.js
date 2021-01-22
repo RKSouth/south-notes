@@ -36,7 +36,7 @@ function commentOnPost(){
         {likeCount}
       </Label>
     </Button>
-    <Button as='div' labelPosition='right'onClick={commentOnPost}>
+    <Button as='div' labelPosition='right' onClick={commentOnPost}>
       <Button basic color='black'>
         <Icon name='comments outline' />
        
