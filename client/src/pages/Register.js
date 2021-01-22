@@ -3,26 +3,24 @@ import { Button, Form } from 'semantic-ui-react'
 import { useMutation } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 
-
+import { useForm } from '../util/hooks'
 
 
 function Register(props) {
   const [errors, setErrors] = useState({});
-    const [values, setValues] = useState({
-        username: '',
-        password: '',
-        confirmPassword: '',
-        email: ''
 
-    })
+  const { onChange, onSubmit, values } = useForm(registerUser, {
+    
+    username: '',
+    password: '',
+    confirmPassword: '',
+    email: ''
+  })  
 
-    const onChange = (event) => {
-        setValues({...values, [event.target.name]: event.target.value})
-    }
+
 
     const [addUser, { loading }] = useMutation(REGISTER_USER, {
         update(_, result){
-            console.log(result)
             props.history.push('/')
         },
         onError(err){
@@ -32,10 +30,8 @@ function Register(props) {
         variables: values
     })
 
-    const onSubmit = (event) => {
-        event.preventDefault();
-        addUser();
-        // here we need straight away send a mutation to our server -because we are using server side validation  
+    function registerUser(){
+      addUser();
     }
 
   
