@@ -278,3 +278,6 @@ Make sure in resolvers/posts.js it says   if(body.trim() === ''){
             }
 
             and there is no args -- if you are still struggling and getting a 400 error make sure you don't have any minor typos in your apollo client.
+To learn more about this next step you can go to the apollographql.com/docs/react/advanced/caching/ and read about direct cache acces  but we don't have acces to the readQuery so we are going to use the proxy and do graphql queries on our data. 
+
+we are already using the query we want to use from the home page - so the best thing to do is to create a new file for it so we can access it in 2 places. This should go in the util folder.

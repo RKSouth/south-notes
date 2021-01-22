@@ -4,6 +4,7 @@ import { Form, Button } from 'semantic-ui-react'
 import { useMutation } from '@apollo/react-hooks'
 
 import { useForm } from '../util/hooks'
+import { FETCH_POSTS_QUERY} from '../util/graphql'
 // import moment from 'moment'
 // import {Link} from "react-router-dom"
 
@@ -15,15 +16,22 @@ function PostForm() {
 
     const [createPost, { error }] = useMutation(CREATE_POST_MUTATION, {
         variables: values,
-        update(_, result){
-            console.log(result);
+        update(proxy, result){
+            const data = proxy.readQuery({
+                query: FETCH_POSTS_QUERY
+                // stolen from the homepage
+            })
+            // we need to edit the getPosts entry (where all the data actually lives)
+            data.getPosts = [result.data.createPost, ...data.getPosts]
+            proxy.writeQuery({ query: FETCH_POSTS_QUERY, data});
             // this resets the body once it is submitted so you have a fresh blank form
             values.body= '';
         }
-    })
+    });
 
     function createPostCallback() {
         createPost();
+        
       }
 
     return (
