@@ -6,6 +6,7 @@ import 'semantic-ui-css/semantic.min.css'
 import './App.css';
 
 import { AuthProvider } from './context/auth'
+import AuthRoute from './util/AuthRoute'
 
 import MenuBar from './components/MenuBar'
 
@@ -24,8 +25,8 @@ function App() {
     <Container>
     <MenuBar />
     <Route exact path='/' component={Home}/>
-    <Route exact path='/login' component={Login}/>
-    <Route exact path='/register' component={Register}/>
+    <AuthRoute exact path='/login' component={Login}/>
+    <AuthRoute exact path='/register' component={Register}/>
     <Route exact path='/about' component={About}/>
     <Route exact path='/creator' component={Creator}/>
     <Route exact path='/fun' component={Fun}/>
