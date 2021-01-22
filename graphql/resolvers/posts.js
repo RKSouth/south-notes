@@ -41,7 +41,7 @@ module.exports = {
             //and make sure that the user is authenticated and then create the post
             const user = checkAuth(context);
             // if the body of the post is empty
-            if(argsToArgsConfig.body.trim() === ''){
+            if(body.trim() === ''){
                 throw new Error('Post body must not be empty')
             }
             console.log(user)

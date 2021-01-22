@@ -13,8 +13,7 @@ function Home() {
     const { user } =useContext(AuthContext)
 
     // show da posts!
-    const { 
-        loading, 
+    const { loading, 
         data: { getPosts: posts } = {} 
     } = useQuery(FETCH_POSTS_QUERY);
     // if(data){

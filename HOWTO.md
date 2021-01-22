@@ -255,3 +255,26 @@ We are now getting posts and setting them to an alias of posts.
 <!-- stopped at 2:52   Did not include notes on building buttons ect.-->
 LOG IN AND REGISTER PAGE
 Add noValidate to the beginning of the FORM ON Register page because HTML5 by default tries to validate email on forms.
+You will need Auth context to authorize and check whether a user is logged in or not -this is auth content used as authcontext and used in a folder called auth routes.
+
+The Register and Login page are almost the same with different forms built in semantic ui that send your info to graphql and then sends you to a home page with a different menubar (that has a logout on it). 
+
+You will also need to create context/auth.js and install jwt-decode this will store your login token into your local storage and as long as it's there on your local computer, you will stay logged in. If you select logout, this deletes the token in local storage. 
+
+CREATING POSTS
+
+In order to create posts we need to create a form that shows up to the left of the recent posts only when the user is logged in. So we need to use the same auth stuff to make sure a user is logged in and can create a post. 
+
+We need to create PostForm component and call the useForm hook in that lives in the util/hook.js file. 
+
+We need to set up our apollo client in a way that once we have the token in our storage we need to add our auth token (saved in local storage ) automatically as an auth header without having to add each time we send a request (very react style of us).
+
+We need to use apollo-link context and it's setContext function that will allow us to set the context of the request and let's us alter it before it gets sent to html- kind of like a componentdidmount.
+
+Import{ setContext } from "apollo-link-context' into the apolloproviderfile.
+
+Make sure in resolvers/posts.js it says   if(body.trim() === ''){
+                throw new Error('Post body must not be empty')
+            }
+
+            and there is no args -- if you are still struggling and getting a 400 error make sure you don't have any minor typos in your apollo client.
