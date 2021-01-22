@@ -4,8 +4,6 @@ import { useQuery } from "@apollo/react-hooks";
 import gql from 'graphql-tag';
 
 import PostCard from './../components/PostCard'
-import HomeMenuBar from './../components/HomeMenuBar'
-
 function Home() {
     // const { loading, data: { getPosts: posts } } = useQuery(FETCH_POSTS_QUERY);
     const { loading, data: { getPosts: posts } = {} } = useQuery(FETCH_POSTS_QUERY);
@@ -15,8 +13,7 @@ function Home() {
     return (
         <div>
         <div>
-<h1>Home Page</h1>
-<HomeMenuBar/>
+{/* <h1>Home Page</h1> */}
         </div>
         <Grid.Row className="page-title">
             <h1>Recent Posts</h1>  
