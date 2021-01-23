@@ -23,9 +23,13 @@ function PostForm() {
             })
             // we need to edit the getPosts entry (where all the data actually lives)
             data.getPosts = [result.data.createPost, ...data.getPosts]
-            proxy.writeQuery({ query: FETCH_POSTS_QUERY, data});
-            // this resets the body once it is submitted so you have a fresh blank form
-            values.body= '';
+            proxy.writeQuery({
+                query: FETCH_POSTS_QUERY,
+                data: {
+                  getPosts: [result.data.createPost, ...data.getPosts],
+                },
+              });
+              values.body = '';
         }
     });
 
