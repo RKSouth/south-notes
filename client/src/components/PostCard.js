@@ -3,16 +3,13 @@ import { Card, Icon, Label, Button, Image} from 'semantic-ui-react'
 import moment from 'moment'
 import {Link} from "react-router-dom"
 import { AuthContext } from '../context/auth'
-import { LikeButton } from './LikeButton'
+import LikeButton from './LikeButton'
 
 function PostCard(
   {post:{ body , createdAt, id, username, likeCount, commentCount, likes} 
 }) {
   const { user } = useContext(AuthContext)
 
-   function likePost(){
-       console.log('like post')
-   }
 
     return (
         <Card fluid>
@@ -30,7 +27,7 @@ function PostCard(
         </Card.Content>
         <Card.Content extra>
         <div>
-    <LikeButton user  = { user } post={{ id, likes, likeCount }} />
+    <LikeButton user={ user } post={{ id, likes, likeCount }} />
     <Button as='div' labelPosition='right' as={Link} to={`/posts/${id}`}>
       <Button basic color='black'>
         <Icon name='comments outline' />
