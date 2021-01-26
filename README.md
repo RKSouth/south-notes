@@ -24,15 +24,24 @@ Graph ql is self -documenting
 
 ## Features 
 __1. A Login Page__
+
 __2. A Register Page__
+
 __3. A Post Display Page__
+
 __4. Create a Post__
+
 __5. Like A Post__
+
 __6. Comment On A Post__
+
 __7. Delete A Post__
+
 __8. View A Post__
 
+
  __To Be Added Later__
+ 
 * The ability to add your own image
 * Email integration (forgot password, confirm account) 
 * Profile View (user's can click on each others profiles and maybe "follow" them)
