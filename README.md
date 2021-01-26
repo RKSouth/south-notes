@@ -18,10 +18,32 @@ building a Facebook clone (kind of )
 
 Graph ql is self -documenting
 
-Other: MongoDB (Atlas)
-    Express
-    Node.js
+* MongoDB (Atlas)
+* Apollo
+* moment
+
 ## Features 
+__1. A Login Page__
+__2. A Register Page__
+__3. A Post Display Page__
+__4. Create a Post__
+__5. Like A Post__
+__6. Comment On A Post__
+__7. Delete A Post__
+__8. View A Post__
+
+ __To Be Added Later__
+* The ability to add your own image
+* Email integration (forgot password, confirm account) 
+* Profile View (user's can click on each others profiles and maybe "follow" them)
+* Profile Edits (users can upload information about themselves: email, website, "about me", etc.) 
+* Edit posts (users can delete their post, but not edit them. Add an "edit" feature.) 
+* File uploads (allow users to upload images, maybe videos, etc.)
+* A user search -it's like facebook, duh
+* An about section
+* A "fun" section for the games I have built in javascript -this would also include a high score count that goes on the profile page
+* Profile Hide Button, in addition to edit you can hide your info. 
+* The ability to follow or friend people
 
 ## Usage
 
