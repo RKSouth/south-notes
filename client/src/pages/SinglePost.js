@@ -7,25 +7,42 @@ import moment from 'moment';
 import LikeButton from '../components/LikeButton';
 import DeleteButton from '../components/DeleteButton.js';
 
+
 import { AuthContext} from '../context/auth'
 
 function SinglePost(props) {
     const postId = props.match.params.postId;
-    console.log(postId)
+    const { user } = useContext(AuthContext);
+    console.log(postId);
+  
+    const {
+        
+      data: { getPost } = {}
+    } = useQuery(FETCH_POST_QUERY, {
+      variables: {
+        postId
+      }
+    });
 
-    const { user } = useContext(AuthContext)
-    const { data: { getPost}} = useQuery(FETCH_POST_QUERY, {
-        variables: {
-            postId
-        }
-    })
+//   one button is clicked redirect to home page
+    function deletePostCallback() {
+        props.history.push('/');
+      }
+    
 
     let postMarkup;
     if(!getPost){
         // a spinner here would be cool
         postMarkup = <p>Leading post...</p>
     } else {
-        const { id,body, createdAt, username, comments, likes, likeCount, commentCount} = getPost;
+        const { id,
+            body, 
+            createdAt, 
+            username, 
+            comments, 
+            likes, 
+            likeCount, 
+            commentCount} = getPost;
 
         postMarkup = (
             <Grid>
@@ -58,9 +75,9 @@ function SinglePost(props) {
                     {commentCount}
                   </Label>
                 </Button>
-                {/* {user && user.username === username && (
+                {user && user.username === username && (
                   <DeleteButton postId={id} callback={deletePostCallback} />
-                )} */}
+                )}
               </Card.Content>
                         </Card>
                     </Grid.Column>
@@ -68,7 +85,7 @@ function SinglePost(props) {
             </Grid>
         )
     }
-
+ return postMarkup
 }
 
 const FETCH_POST_QUERY = gql`

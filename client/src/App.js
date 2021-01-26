@@ -29,7 +29,7 @@ function App() {
     <Route exact path='/' component={Home}/>
     <AuthRoute exact path='/login' component={Login}/>
     <AuthRoute exact path='/register' component={Register}/>
-    <AuthRoute exact path='/posts/:postId' component={SinglePost}/>
+    <Route exact path='/post/:postId' component={SinglePost}/>
     <Route exact path='/about' component={About}/>
     <Route exact path='/creator' component={Creator}/>
     <Route exact path='/fun' component={Fun}/>

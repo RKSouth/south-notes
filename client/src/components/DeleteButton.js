@@ -1,16 +1,24 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
 import { useMutation } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import { Button, Confirm, Icon } from 'semantic-ui-react';
 
-function DeleteButton({ postId, callback }){
-   const [confirmOpen, setConfirmOpen] = useState(false);
 
+import { FETCH_POSTS_QUERY } from '../util/graphql';
+
+function DeleteButton({ postId, callback }) {
+    const [confirmOpen, setConfirmOpen] = useState(false);
+  
     const [deletePost] = useMutation(DELETE_POST_MUTATION, {
-        update(){
-
-        },
+      update(proxy) {
+        setConfirmOpen(false);
+        const data = proxy.readQuery({
+          query: FETCH_POSTS_QUERY
+        });
+        data.getPosts = data.getPosts.filter((p) => p.id !== postId);
+        proxy.writeQuery({ query: FETCH_POSTS_QUERY, data });
+        if (callback) callback();
+      },
         variables: {
             postId
 
@@ -37,9 +45,10 @@ function DeleteButton({ postId, callback }){
 }
 
 const DELETE_POST_MUTATION = gql`
-    mutation deletePost($postId: ID!){
-        deletePost($postId: postId)
-    }
-`
+  mutation deletePost($postId: ID!) {
+    deletePost(postId: $postId)
+  }
+`;
+
 
 export default DeleteButton;
