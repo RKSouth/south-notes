@@ -13,7 +13,7 @@ import MenuBar from './components/MenuBar';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import SinglePost from './pages/SinglePost;'
+import SinglePost from './pages/SinglePost'
 
 import Creator from './pages/Creator';
 import Fun from './pages/Fun';
@@ -29,7 +29,7 @@ function App() {
     <Route exact path='/' component={Home}/>
     <AuthRoute exact path='/login' component={Login}/>
     <AuthRoute exact path='/register' component={Register}/>
-    <Route exact path='/posts/:postId' component={SinglePost}/>
+    <AuthRoute exact path='/posts/:postId' component={SinglePost}/>
     <Route exact path='/about' component={About}/>
     <Route exact path='/creator' component={Creator}/>
     <Route exact path='/fun' component={Fun}/>
