@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react'
 import gql from 'graphql-tag'
 import { useQuery } from "@apollo/react-hooks"
 
@@ -8,60 +8,60 @@ import LikeButton from '../components/LikeButton';
 import DeleteButton from '../components/DeleteButton.js';
 
 
-import { AuthContext} from '../context/auth'
+import { AuthContext } from '../context/auth'
 
 function SinglePost(props) {
-    const postId = props.match.params.postId;
-    const { user } = useContext(AuthContext);
-    console.log(postId);
-  
-    const {
-        
-      data: { getPost } = {}
-    } = useQuery(FETCH_POST_QUERY, {
-      variables: {
-        postId
-      }
-    });
+  const postId = props.match.params.postId;
+  const { user } = useContext(AuthContext);
+  console.log(postId);
 
-//   one button is clicked redirect to home page
-    function deletePostCallback() {
-        props.history.push('/');
-      }
-    
+  const {
 
-    let postMarkup;
-    if(!getPost){
-        // a spinner here would be cool
-        postMarkup = <p>Leading post...</p>
-    } else {
-        const { id,
-            body, 
-            createdAt, 
-            username, 
-            comments, 
-            likes, 
-            likeCount, 
-            commentCount} = getPost;
+    data: { getPost } = {}
+  } = useQuery(FETCH_POST_QUERY, {
+    variables: {
+      postId
+    }
+  });
 
-        postMarkup = (
-            <Grid>
-                <Grid.Row>
-                    <Grid.Column width ={2}>
-                    <Image 
-                    size='small'
-                    src='https://react.semantic-ui.com/images/avatar/large/molly.png'
-                    float='right'/>  
-                    </Grid.Column>
-                    <Grid.Column width ={10}>
-                        <Card fluid>
-                            <Card.Content>
-                                < Card.Header>{ username }</Card.Header>
-                                <Card.Meta>{moment(createdAt).fromNow()}</Card.Meta>
-                                <Card.Description>{body}</Card.Description>
-                            </Card.Content>
-                            <hr/>
-                            <Card.Content extra>
+  //   one button is clicked redirect to home page
+  function deletePostCallback() {
+    props.history.push('/');
+  }
+
+
+  let postMarkup;
+  if (!getPost) {
+    // a spinner here would be cool
+    postMarkup = <p>Leading post...</p>
+  } else {
+    const { id,
+      body,
+      createdAt,
+      username,
+      comments,
+      likes,
+      likeCount,
+      commentCount } = getPost;
+
+    postMarkup = (
+      <Grid>
+        <Grid.Row>
+          <Grid.Column width={2}>
+            <Image
+              size='small'
+              src='https://react.semantic-ui.com/images/avatar/large/molly.png'
+              float='right' />
+          </Grid.Column>
+          <Grid.Column width={10}>
+            <Card fluid>
+              <Card.Content>
+                < Card.Header>{username}</Card.Header>
+                <Card.Meta>{moment(createdAt).fromNow()}</Card.Meta>
+                <Card.Description>{body}</Card.Description>
+              </Card.Content>
+              <hr />
+              <Card.Content extra>
                 <LikeButton user={user} post={{ id, likeCount, likes }} />
                 <Button
                   as="div"
@@ -79,13 +79,24 @@ function SinglePost(props) {
                   <DeleteButton postId={id} callback={deletePostCallback} />
                 )}
               </Card.Content>
-                        </Card>
-                    </Grid.Column>
-                </Grid.Row>
-            </Grid>
-        )
-    }
- return postMarkup
+            </Card>
+
+                  {comments.map(comment => (
+                    <Card fluid key ={comment.id}>
+                      <Card.Content>
+                        <Card.Header>{comment.username}</Card.Header>
+                        <Card.Meta>{moment(comment.createdAt).fromNow()}</Card.Meta>
+                        <Card.Description>{comment.body}</Card.Description>
+                      </Card.Content>
+                    </Card>
+                  )
+                    )}
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+    )
+  }
+  return postMarkup
 }
 
 const FETCH_POST_QUERY = gql`
