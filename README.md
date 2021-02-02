@@ -1,16 +1,17 @@
-# facebook-clone
+# Rachael-Book
 building a Facebook clone (kind of )
 
-## Table of Contents
+## __Table of Contents__
 * [Technologies Used](Technologies_Used)
 <!-- * [Deployed Site](Deployed) -->
 * [Features](Features)
+* [Learning](Learning)
 * [Usage](Usage)
 * [Author](Author)
 * [Credits](Credits)
 * [License](License)
 
-## Technologies_Used
+## __Technologies_Used__
 
 * React - used to make responsive pages that "react" in real time to changes on the pages.
 * Semantic UI - Easy to use pre-built css framework that helps make building beautiful websites, easier.
@@ -22,7 +23,7 @@ Graph ql is self -documenting
 * Apollo
 * moment
 
-## Features 
+## __Features__ 
 __1. A Login Page__
 
 __2. A Register Page__
@@ -61,7 +62,17 @@ Deployed using heroku (back end) and netlify (front end)
 * Fix issue with hour long timeout if timeout then direct to login page
 * Put comments in separate js file
 
-## Usage
+## __Learning__
+
+__GraphQL__
+
+__React__
+
+__Semantic UI__
+
+__Deployment__
+
+## __Usage__
 
 ## Author 
 Rachael Kelm-Southworth
