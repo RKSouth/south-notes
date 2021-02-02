@@ -32,6 +32,7 @@ module.exports = gql`
         token: String!
         username: String!
         createdAt: String!
+        bio: String!
     }
     input RegisterInput{
         username: String!
@@ -59,6 +60,7 @@ module.exports = gql`
         # for adjusting the likes
         # there is no unlike mutation because the like button will work as a toggle
         likePost(postId: ID!): Post!
+        editUser(username: String!, bio: String!): User!
     }
     type Subscription{
         newPost: Post!
