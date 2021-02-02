@@ -39,6 +39,11 @@ __7. Delete A Post__
 
 __8. View A Post__
 
+__9. Deployed__
+
+Deployed using heroku (back end) and netlify (front end)
+
+<!-- could use goolge cloud services or aws for back end too -->
 
  __To Be Added Later__
  
