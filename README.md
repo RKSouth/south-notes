@@ -53,6 +53,8 @@ __8. View A Post__
 * A "fun" section for the games I have built in javascript -this would also include a high score count that goes on the profile page
 * Profile Hide Button, in addition to edit you can hide your info. 
 * The ability to follow or friend people
+* Fix issue with hour long timeout if timeout then direct to login page
+* Put comments in separate js file
 
 ## Usage
 

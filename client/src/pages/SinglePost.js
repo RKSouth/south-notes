@@ -9,6 +9,7 @@ import DeleteButton from '../components/DeleteButton.js';
 
 
 import { AuthContext } from '../context/auth'
+import Signal from '../util/Popup'
 
 function SinglePost(props) {
   const postId = props.match.params.postId;
@@ -75,6 +76,7 @@ const [submitComment] = useMutation(SUBMIT_COMMENT_MUTATION, {
               <hr />
               <Card.Content extra>
                 <LikeButton user={user} post={{ id, likeCount, likes }} />
+                <Signal content='Comment on this Post'>
                 <Button
                   as="div"
                   labelPosition="right"
@@ -87,6 +89,7 @@ const [submitComment] = useMutation(SUBMIT_COMMENT_MUTATION, {
                     {commentCount}
                   </Label>
                 </Button>
+                </Signal>
                 {user && user.username === username && (
                   <DeleteButton postId={id} callback={deletePostCallback} />
                 )}
