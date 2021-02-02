@@ -37,7 +37,7 @@ function LikeButton({ user, post: {id, likeCount, likes}}){
     )
 
     return (
-      <Signal content="This Post is electric">
+      <Signal content={liked ? "Actually, no." : "This Post is electric"}>
         <Button as='div' labelPosition='right' onClick={likePost}>
      {likeButton}
       <Label as='a' basic color='green' pointing='left'>
