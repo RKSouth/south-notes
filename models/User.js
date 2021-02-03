@@ -7,7 +7,8 @@ const userSchema = new Schema({
     // will handle the require in graphql
     password: String,
     email: String,
-    createdAt: String
+    createdAt: String,
+    bio: String
 });
 
 module.exports = model('User', userSchema);

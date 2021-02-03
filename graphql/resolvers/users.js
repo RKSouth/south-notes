@@ -14,7 +14,7 @@ function generateToken(user){
         email: user.email,
         username: user.username
         // here is were we give it a secret -store in the config file as well
-    }, SECRET_KEY, { expiresIn: '1h' });
+    }, SECRET_KEY, { expiresIn: '5h' });
 
 }
 
