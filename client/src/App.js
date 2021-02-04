@@ -18,7 +18,7 @@ import SinglePost from './pages/SinglePost'
 import Creator from './pages/Creator';
 import Fun from './pages/Fun';
 import About from './pages/About';
-
+import Profile from './pages/Profile'
 
 function App() {
   return (
@@ -30,6 +30,7 @@ function App() {
     <AuthRoute exact path='/login' component={Login}/>
     <AuthRoute exact path='/register' component={Register}/>
     <Route exact path='/post/:postId' component={SinglePost}/>
+    <Route exact path='/profile' component={Profile}/>
     <Route exact path='/about' component={About}/>
     <Route exact path='/creator' component={Creator}/>
     <Route exact path='/fun' component={Fun}/>
