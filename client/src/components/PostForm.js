@@ -5,6 +5,7 @@ import { useMutation } from '@apollo/react-hooks'
 
 import { useForm } from '../util/hooks'
 import { FETCH_POSTS_QUERY} from '../util/graphql'
+import './../pages/style.css'
 // import moment from 'moment'
 // import {Link} from "react-router-dom"
 
@@ -40,7 +41,7 @@ function PostForm() {
 
     return (
         <>
-   <Form onSubmit={onSubmit}>
+   <Form onSubmit={onSubmit} >
        <h2>Create a post:</h2>
        <Form.Field>
            <Form.Input

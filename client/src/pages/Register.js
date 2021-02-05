@@ -5,6 +5,7 @@ import gql from 'graphql-tag'
 
 import { AuthContext } from '../context/auth'
 import { useForm } from '../util/hooks'
+import './../pages/style.css'
 
 
 function Register(props) {

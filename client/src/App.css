@@ -14,3 +14,8 @@
 .ui.green.buttons .button:focus {
   background-color: #21ba45;
 }
+
+body {
+  background-image:url(../src/Assets/Images/pexels-cátia-matos-1072179.jpg) ;
+  background-image: flex;
+}

@@ -11,6 +11,8 @@ import DeleteButton from '../components/DeleteButton.js';
 import { AuthContext } from '../context/auth'
 import Signal from '../util/Popup'
 
+import './style.css'
+
 function SinglePost(props) {
   const postId = props.match.params.postId;
   const { user } = useContext(AuthContext);
@@ -58,7 +60,7 @@ const [submitComment] = useMutation(SUBMIT_COMMENT_MUTATION, {
       commentCount } = getPost;
 
     postMarkup = (
-      <Grid>
+      <Grid className="card-container">
         <Grid.Row>
           <Grid.Column width={2}>
             <Image
@@ -67,7 +69,7 @@ const [submitComment] = useMutation(SUBMIT_COMMENT_MUTATION, {
               float='right' />
           </Grid.Column>
           <Grid.Column width={10}>
-            <Card fluid>
+            <Card fluid >
               <Card.Content>
                 < Card.Header>{username}</Card.Header>
                 <Card.Meta>{moment(createdAt).fromNow()}</Card.Meta>
@@ -97,9 +99,9 @@ const [submitComment] = useMutation(SUBMIT_COMMENT_MUTATION, {
             </Card>
                   {user &&(
                     <Card fluid>
-                        <p>Post a comment</p>
+                        <p >Post a comment</p>
                         <Card.Content>
-                        <Form>
+                        <Form className="form-container">
                           <div className="ui action input and fluid">
                             <input
                             type="text"

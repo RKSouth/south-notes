@@ -52,6 +52,24 @@ module.exports = {
                 token
             };
             },
+        
+            async editUser(_, { username, bio }) {
+                const { errors, valid } = validateBioInput(username,  bio);
+                //we need to throw an error of the valid is false in here too
+                if(!valid){
+                    throw new UserInputError('Errors' , { errors })
+                }
+                const user = await User.findOne({ username });
+
+          
+                
+                  
+            return {
+                ...user._doc,
+                id: user._id,
+                bi: user._bio
+            };
+            },    
 
          async register(_,{ 
              registerInput: { username, email, password, confirmPassword}

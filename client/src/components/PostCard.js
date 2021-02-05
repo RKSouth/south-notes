@@ -6,6 +6,8 @@ import { AuthContext } from '../context/auth'
 import LikeButton from './LikeButton'
 import DeleteButton from './DeleteButton';
 import Signal from '../util/Popup'
+import './../pages/style.css'
+
 
 function PostCard(
   {post:{ body , createdAt, id, username, likeCount, commentCount, likes} 
@@ -14,7 +16,7 @@ function PostCard(
 
 
     return (
-        <Card fluid>
+        <Card fluid className="card-container">
         <Card.Content>
           <Image
             floated='right'

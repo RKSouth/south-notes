@@ -9,6 +9,7 @@ import Signal from '../util/Popup'
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { useForm } from '../util/hooks';
+import './style.css'
 
 function Profile(props, {user: username, createdAt, id , bio, token}) {
     const  { user, logout } = useContext(AuthContext)
@@ -37,7 +38,7 @@ function Profile(props, {user: username, createdAt, id , bio, token}) {
       }
 
     return (
-        <Card fluid>
+        <Card fluid className="card-container">
         <Card.Content>
           <Image
             floated='right'

@@ -5,7 +5,7 @@ import gql from 'graphql-tag';
 
 import { AuthContext } from '../context/auth';
 import { useForm } from '../util/hooks';
-
+import './../pages/style.css'
 function Login(props) {
   const context = useContext(AuthContext);
   const [errors, setErrors] = useState({});
@@ -37,7 +37,7 @@ function Login(props) {
 
   return (
     <div className="form-container">
-      <Form onSubmit={onSubmit} noValidate className={loading ? 'loading' : ''}>
+      <Form onSubmit={onSubmit} noValidate className={loading ? 'loading' : ''} className="form-container"> 
         <h1>Login</h1>
         <Form.Input
           label="Username"
