@@ -12,7 +12,13 @@ h2 {
 .ui.card{
    background-color:rgb(229, 253, 224);
 }
-p {
+p, .ui.text.menu .item, .ui.text.menu .header.item {
+    color: rgb(229, 253, 224);
+}
+.ui.text.menu .item {
     color: rgb(229, 253, 224);
 }
 
+p:hover{
+    color: rgb(115, 253, 87);
+}
