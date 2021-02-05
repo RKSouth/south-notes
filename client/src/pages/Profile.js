@@ -38,36 +38,25 @@ function Profile(props, {user: username, createdAt, id , bio, token}) {
       }
 
     return (
-        <Card fluid className="card-container">
+        <Card fluid >
         <Card.Content>
           <Image
-            floated='right'
-            size='mini'
+            size='small'
             src='https://react.semantic-ui.com/images/avatar/large/molly.png'
           />
-          <Card.Header name={user.username}>{user.username}</Card.Header>
+          <hr></hr>
+          <Card.Header  float="right"name={user.username}>{user.username}</Card.Header>
           <Card.Meta>{user.createdAt}</Card.Meta>
           <Card.Description>
           {user && (
+              
               <h1>edit your page</h1>
           )}
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
         <div className="form-container">
-            <Form 
-            // onSubmit={onSubmit} noValidate className={loading ? 'loading' : ''}
-            >
-            <Form.Input
-                label = "Username"
-                placeholder="Username.."
-                name="username"
-                type="text"
-                // value= {values.username}
-                // error= {errors.username ? true : false}
-                // onChange={onChange}
-                />
-                </Form>
+        
                 </div>
         </Card.Content>
       </Card>

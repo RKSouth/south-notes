@@ -67,7 +67,7 @@ module.exports = {
             return {
                 ...user._doc,
                 id: user._id,
-                bi: user._bio
+                bio: user._bio
             };
             },    
 

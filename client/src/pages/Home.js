@@ -24,7 +24,6 @@ function Home() {
     return (
         <div>
         <div>
-{/* <h1>Home Page</h1> */}
         </div>
         <Grid.Row className="page-title">
             <h1>Recent Posts</h1>  
