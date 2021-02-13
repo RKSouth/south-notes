@@ -1,43 +1,23 @@
 import React, { useContext, useState} from 'react'
-import { Card, Form, Icon, Label, Button, Image } from 'semantic-ui-react'
-import moment from 'moment'
+import { Card, Grid, Transition,Form, Icon, Label, Button, Image } from 'semantic-ui-react'
+import { useQuery } from "@apollo/react-hooks";
 import {Link} from "react-router-dom"
 import { AuthContext } from '../context/auth'
-import LikeButton from '../components/LikeButton'
-import DeleteButton from '../components/DeleteButton';
-import Signal from '../util/Popup'
-import { useMutation } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
-import { useForm } from '../util/hooks';
+import { FETCH_POSTS_QUERY } from '../util/graphql'
+import PostCard from './../components/PostCard'
 import './style.css'
 
-function Profile(props, {user: username, createdAt, id , bio, token}) {
-    const  { user, logout } = useContext(AuthContext)
+function Profile() {
+    const  { user } = useContext(AuthContext)
     const context = useContext(AuthContext);
-    const { onChange, onSubmit, values } = useForm(editUserCallback, {
-        username: '',
-        bio: ''
-      });
 
-      const [editUser, { loading }] = useMutation(EDIT_USER, {
-        update(
-          _,
-          {
-            data: { editUser: userData }
-          }
-        ) {
-          context.login(userData);
-          props.history.push('/Profile');
-        },
-       
-        variables: values
-      });
-    
-      function editUserCallback() {
-        editUser();
-      }
+    const { loading, 
+      data: { getPosts: posts } = {} 
+  } = useQuery(FETCH_POSTS_QUERY);
+
 
     return (
+      <div>
         <Card fluid >
         <Card.Content>
           <Image
@@ -45,8 +25,8 @@ function Profile(props, {user: username, createdAt, id , bio, token}) {
             src='https://react.semantic-ui.com/images/avatar/large/molly.png'
           />
           <hr></hr>
-          <Card.Header  float="right"name={user.username}>{user.username}</Card.Header>
-          <Card.Meta>{user.createdAt}</Card.Meta>
+          <Card.Header  float="right">username here</Card.Header>
+          <Card.Meta>user created At</Card.Meta>
           <Card.Description>
           {user && (
               
@@ -60,30 +40,56 @@ function Profile(props, {user: username, createdAt, id , bio, token}) {
                 </div>
         </Card.Content>
       </Card>
+
+<Grid.Row className="page-title">
+<h1>Recent Posts</h1>  
+</Grid.Row>
+<Grid columns={3} >
+<Grid.Row>
+{/* if user are logged in show this form */}
+
+{loading ? (
+<h1> Loading posts...</h1>
+) : ( 
+<Transition.Group>
+{
+      posts && posts.map( post => (
+        <Grid.Column key = {post.id} style={{ marginBottom: 40}}>
+            <PostCard post = {post}/>
+        </Grid.Column>
+    ) )
+}
+</Transition.Group>
+)}
+</Grid.Row>
+
+
+</Grid>
+</div>
     )
 }
 
-const EDIT_USER = gql`
-  mutation editUser(
-    $username: String!
-    $bio: String!
+// const EDIT_USER = gql`
+//   mutation editUser(
+//     $username: String!
+//     $bio: String!
 
-  ) {
-    editUser(
-        editUser: {
-        username: $username
-        email: $email
-        bio: $bio
-      }
-    ) {
-      id
-      email
-      username
-      createdAt
-      token
-      bio
-    }
-  }
-`;
+//   ) {
+//     editUser(
+//         editUser: {
+//         username: $username
+//         email: $email
+//         bio: $bio
+//       }
+//     ) {
+//       id
+//       email
+//       username
+//       createdAt
+//       token
+//       bio
+//     }
+//   }
+// `;
 
 export default Profile

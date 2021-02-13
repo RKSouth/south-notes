@@ -15,17 +15,18 @@ const path = pathname === '/' ? 'home' : pathname.substr(1);
 const [activeItem, setActiveItem] = useState(path)
 //   handleItemClick = (e, { name }) => setState({ activeItem: name })
 const handleItemClick = (e, { name }) => setActiveItem(name);
+
 const menuBar = user ? (
   <Menu text size ="massive" color="green">
   <Menu.Item name={user.username} active as={Link} to="/" >
-  {user.username}-Book</Menu.Item>
+  {user.username}-Notes</Menu.Item>
 <Menu.Menu position="right">
   <Menu.Item name="logout" onClick={logout} />
 </Menu.Menu>
 </Menu>
   ) : (
   <Menu text size ="massive" color="green">
-  <Menu.Item header>Rachael-Book</Menu.Item>
+  <Menu.Item header>South-Notes</Menu.Item>
   <Menu.Item
     name='home'
     active={activeItem === 'home'}

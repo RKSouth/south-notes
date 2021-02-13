@@ -22,3 +22,8 @@ p, .ui.text.menu .item, .ui.text.menu .header.item {
 p:hover{
     color: rgb(115, 253, 87);
 }
+
+.ui.form .field>label { 
+
+    color:  rgb(229, 253, 224);
+  }
