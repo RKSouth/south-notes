@@ -7,6 +7,10 @@ h2 {
     box-shadow: 10 10 10 10;
     
 }
+h3 {
+    color: rgb(229, 253, 224);
+    box-shadow: 10 10 10 10;
+}
 .form-container {
     background-color:rgb(229, 253, 224);
 }
@@ -20,8 +24,10 @@ p, .ui.text.menu .item, .ui.text.menu .header.item {
 .ui.text.menu .item {
     color: rgb(229, 253, 224);
 }
-
-p:hover{
+.ui.text.menu .item :focus {
+    color: rgb(115, 253, 87) !important 
+}
+p, a :hover{
     color: rgb(115, 253, 87);
 }
 
@@ -29,3 +35,7 @@ p:hover{
 
     color:  rgb(229, 253, 224);
   }
+
+  ::selection {
+    color:  rgb(179, 219, 171);
+   }

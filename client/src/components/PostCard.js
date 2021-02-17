@@ -11,7 +11,7 @@ import './../pages/style.css'
 
 
 function PostCard(
-  {post:{ body, image, createdAt, id, username, likeCount, commentCount, likes} 
+  {post:{ body, createdAt, id, username, likeCount, commentCount, likes} 
 }) {
   const { user } = useContext(AuthContext)
 
