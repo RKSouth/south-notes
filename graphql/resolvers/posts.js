@@ -1,9 +1,10 @@
 const {AuthenticationError, UserInputError } = require('apollo-server');
-const { argsToArgsConfig } = require('graphql/type/definition');
 
 const Post = require('../../models/Post');
+const User = require("../../models/User");
 const checkAuth = require('../../util/check-auth');
 
+const NEW_POST = "NEW_POST";
 
 module.exports = {
     
@@ -15,7 +16,9 @@ module.exports = {
             //    in order to srt posts so the latest show up on top and the older ones on the bottom
             // we just need to sort  by createdAt so instead of:
             //    const posts = await Post.find();
-            const posts = await Post.find().sort({createdAt: -1})
+            const posts = await Post.find({})
+            .populate("author")
+            .sort({createdAt: -1})
                return posts;
            } catch (err) {
                throw new Error(err);
@@ -23,7 +26,8 @@ module.exports = {
        },
        async getPost(_, {postId}){
            try{
-               const post = await Post.findById(postId);
+               const post = await Post.findById(postId)
+               .populate("author");
                if(post){
                    return post;
                } else {
@@ -35,25 +39,31 @@ module.exports = {
        }
     },
     Mutation: {
-        async createPost(_, { body }, context){
+        async createPost(_, { body, image }, context){
             // user will log in and get auth token and then need to put in auth header and send that header with the request
             // and we need to get that token and then decode it and get info from it 
             //and make sure that the user is authenticated and then create the post
             const user = checkAuth(context);
             // if the body of the post is empty
             if(body.trim() === ''){
-                throw new Error('Post body must not be empty')
+                throw new Error('Post body must not be empty', {errors} )
             }
             console.log(user)
 // these come from the post model
-            const newPost = new Post({
+            const newPost = await new Post({
                 body,
-                user: user.id,
-                username: user.username,
+                author: user.id,
                 createdAt: new Date().toISOString()
-            });
+            }).save();
             // to save the post
-            const post = await newPost.save();
+            // const post = await newPost.save();
+
+            await User.findOneAndUpdate(
+                { _id: user.id },
+                { $push: { posts: post._id } }
+              );
+        
+              await Post.populate(post, "user");
             // for adding a subscription
             context.pubsub.publish('NEW_POST', {
                 newPost: post

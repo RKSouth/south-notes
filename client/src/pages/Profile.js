@@ -1,95 +1,68 @@
-import React, { useContext, useState} from 'react'
-import { Card, Grid, Transition,Form, Icon, Label, Button, Image } from 'semantic-ui-react'
-import { useQuery } from "@apollo/react-hooks";
-import {Link} from "react-router-dom"
+import React, { useContext, useState, useRef } from 'react'
+// import gql from 'graphql-tag'
+import { useQuery, useMutation } from "@apollo/react-hooks"
+// import { Card, Form, Grid, Button, Image, Label, Icon } from 'semantic-ui-react';
+// import moment from 'moment';
+// import LikeButton from '../components/LikeButton';
+// import DeleteButton from '../components/DeleteButton.js';
+// import { Link } from 'react-router-dom'
+// import { FETCH_USER_QUERY } from "../util/graphql";
+
 import { AuthContext } from '../context/auth'
-import { FETCH_POSTS_QUERY } from '../util/graphql'
-import PostCard from './../components/PostCard'
+// import Signal from '../util/Popup'
+
 import './style.css'
 
-function Profile() {
-    const  { user } = useContext(AuthContext)
-    const context = useContext(AuthContext);
-
-    const { loading, 
-      data: { getPosts: posts } = {} 
-  } = useQuery(FETCH_POSTS_QUERY);
+function Profile(props) {
+  const username = props.match.params.username;
+  const { user } = useContext(AuthContext);
+  const commentInputRef = useRef(null);
+  const [comment, setComment] = useState('');
 
 
-    return (
-      <div>
-        <Card fluid >
-        <Card.Content>
-          <Image
-            size='small'
-            src='https://react.semantic-ui.com/images/avatar/large/molly.png'
-          />
-          <hr></hr>
-          <Card.Header  float="right">username here</Card.Header>
-          <Card.Meta>user created At</Card.Meta>
-          <Card.Description>
-          {user && (
-              
-              <h1>edit your page</h1>
-          )}
-          </Card.Description>
-        </Card.Content>
-        <Card.Content extra>
-        <div className="form-container">
-        
-                </div>
-        </Card.Content>
-      </Card>
+  // const { data } = useQuery(FETCH_USER_QUERY, {
+  //   variables: { userId: user?.id },
+  // });
 
-<Grid.Row className="page-title">
-<h1>Recent Posts</h1>  
-</Grid.Row>
-<Grid columns={3} >
-<Grid.Row>
-{/* if user are logged in show this form */}
+// const [submitComment] = useMutation(SUBMIT_COMMENT_MUTATION, {
+//   update(){
+//     setComment('');
+//     commentInputRef.current.blur();
+//   },
+//     variables: {
+//       postId,
+//       body: comment
+//     }
+// }) 
 
-{loading ? (
-<h1> Loading posts...</h1>
-) : ( 
-<Transition.Group>
-{
-      posts && posts.map( post => (
-        <Grid.Column key = {post.id} style={{ marginBottom: 40}}>
-            <PostCard post = {post}/>
-        </Grid.Column>
-    ) )
-}
-</Transition.Group>
-)}
-</Grid.Row>
+  //   one button is clicked redirect to home page
+  function deletePostCallback() {
+    props.history.push('/');
+  }
 
-
-</Grid>
-</div>
-    )
+  return (
+    <div>
+      <h3>this is the profile page</h3>
+    </div>
+  )
 }
 
-// const EDIT_USER = gql`
-//   mutation editUser(
-//     $username: String!
-//     $bio: String!
 
-//   ) {
-//     editUser(
-//         editUser: {
-//         username: $username
-//         email: $email
-//         bio: $bio
-//       }
-//     ) {
+// const SUBMIT_COMMENT_MUTATION = gql`
+//   mutation($postId: String!, $body: String!) {
+//     createComment(postId: $postId, body: $body) {
 //       id
-//       email
-//       username
-//       createdAt
-//       token
-//       bio
+//       comments {
+//         id
+//         body
+//         createdAt
+//         username
+//       }
+//       commentCount
 //     }
 //   }
 // `;
 
-export default Profile
+
+
+export default Profile;

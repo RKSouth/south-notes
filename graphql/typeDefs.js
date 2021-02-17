@@ -8,11 +8,11 @@ module.exports = gql`
         id: ID!
         body: String!
         createdAt:String!
-        username:String!
         # exclamation point inside of array of array means the array needs to contain at least 1 element
         comments: [Comment]!
         likes: [Like]!
         likeCount: Int!
+        author: [User]
         commentCount: Int!
     }
     type Comment{
@@ -34,6 +34,7 @@ module.exports = gql`
         createdAt: String!
         bio: String!
         image: String!
+        posts: [Post]
     }
     input RegisterInput{
         username: String!
@@ -44,6 +45,8 @@ module.exports = gql`
     type Query {
        getPosts: [Post]
        getPost(postId: ID!): Post
+       getUsers: [User!]
+       getUser(userId: ID!): User
     }
     type Mutation {
         register(registerInput: RegisterInput): User!
@@ -61,7 +64,7 @@ module.exports = gql`
         # for adjusting the likes
         # there is no unlike mutation because the like button will work as a toggle
         likePost(postId: ID!): Post!
-        editUser(username: String!, bio: String!): User!
+        updateUser(image: String!, bio: String!): User!
     }
     type Subscription{
         newPost: Post!

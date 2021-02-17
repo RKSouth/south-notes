@@ -4,7 +4,7 @@ const { model, Schema } = require('mongoose');
 const postSchema = new Schema({
     body: String,
     // will handle the require in graphql
-    username: String,
+    // username: String,
     createdAt: String,
     comments: [
         {
@@ -20,7 +20,7 @@ const postSchema = new Schema({
         }
     ],
     // allows us to later use mongoose to automatically pop user field
-    user: {
+    author: {
         type: Schema.Types.ObjectId,
         ref: 'users'
     }

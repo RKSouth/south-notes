@@ -7,6 +7,7 @@ const { validateRegisterInput,
      } = require('../../util/validators')
 const { SECRET_KEY} = require("../../config");
 const User = require('../../models/User');
+const Post = require("../../models/Post");
 
 function generateToken(user){
   return jwt.sign({
@@ -20,6 +21,35 @@ function generateToken(user){
 
 
 module.exports = {
+    Query: {
+        async getUsers() {
+          try {
+            const users = await User.find().sort({ username: 1 });
+            return users;
+          } catch (err) {
+            throw new Error(err);
+          }
+        },
+        async getUser(_, { userId }, context) {
+          const user = checkAuth(context);
+    
+          if (!user) {
+            return "please log in or sign up to view this user";
+          }
+    
+          try {
+            const foundUser = await User.findById(userId).populate("posts");
+    
+            if (foundUser) {
+              return foundUser;
+            } else {
+              throw new Error("user not found");
+            }
+          } catch (err) {
+            throw new Error(err);
+          }
+        },
+      },
     Mutation: {
         //most of the time we will just args as part of the things we can get in our resolver arguments
         // parent gives you the result of what was the input of the last step, in some cases you can have multiple resolvers
@@ -53,23 +83,7 @@ module.exports = {
             };
             },
         
-            async editUser(_, { username, bio }) {
-                const { errors, valid } = validateBioInput(username,  bio);
-                //we need to throw an error of the valid is false in here too
-                if(!valid){
-                    throw new UserInputError('Errors' , { errors })
-                }
-                const user = await User.findOne({ username });
-
-          
-                
-                  
-            return {
-                ...user._doc,
-                id: user._id,
-                bio: user._bio
-            };
-            },    
+   
 
          async register(_,{ 
              registerInput: { username, email, password, confirmPassword}
@@ -99,12 +113,22 @@ module.exports = {
                     }
                 })
             }
+            const userEmail = await User.findOne({ email });
+            if (userEmail) {
+              throw new UserInputError("email is taken", {
+                errors: {
+                  email: "This email is taken",
+                },
+              });
+            }
 
             // here is where we form our user object
             const newUser = new User({
                 email,
                 username,
                 password,
+                image: null,
+                bio: null,
                 createdAt: new Date().toISOString()
             });
             // saving newUser info to the database
@@ -118,7 +142,19 @@ module.exports = {
                 ...res._doc,
                 id: res._id,
                 token
-            }
+            };
+        },
+        async updateUser(_, { image, bio }, context) {
+          const user = checkAuth(context);
+    
+          const updatedUser = await User.findOneAndUpdate(
+            { _id: user.id },
+            { image: image },
+            { bio: bio },
+            { new: true }
+          );
+    
+          return updatedUser;
         }
     }
 }

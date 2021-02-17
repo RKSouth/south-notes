@@ -5,12 +5,14 @@ h1 {
 h2 {
     color: rgb(229, 253, 224);
     box-shadow: 10 10 10 10;
+    
 }
 .form-container {
     background-color:rgb(229, 253, 224);
 }
 .ui.card{
    background-color:rgb(229, 253, 224);
+   opacity: .80;
 }
 p, .ui.text.menu .item, .ui.text.menu .header.item {
     color: rgb(229, 253, 224);
