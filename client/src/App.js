@@ -30,7 +30,7 @@ function App() {
     <AuthRoute exact path='/login' component={Login}/>
     <AuthRoute exact path='/register' component={Register}/>
     <Route exact path='/post/:postId' component={SinglePost}/>
-    <Route exact path='/profile/:username' component={Profile}/>
+    {/* <Route exact path='/profile/:username' component={Profile}/> */}
     <Route exact path='/about' component={About}/>
     <Route exact path='/creator' component={Creator}/>
     <Route exact path='/fun' component={Fun}/>
