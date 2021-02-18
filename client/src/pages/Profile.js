@@ -1,12 +1,9 @@
-import React, { useContext, useState, useRef } from 'react'
-// import gql from 'graphql-tag'
-import { useQuery, useMutation } from "@apollo/react-hooks"
+import React, { useContext } from 'react'
+import gql from "graphql-tag"
+import { useQuery } from "@apollo/react-hooks"
 // import { Card, Form, Grid, Button, Image, Label, Icon } from 'semantic-ui-react';
 import moment from 'moment';
-// import LikeButton from '../components/LikeButton';
-// import DeleteButton from '../components/DeleteButton.js';
-// import { Link } from 'react-router-dom'
-// import { FETCH_USER_QUERY } from "../util/graphql";
+// import { FETCH_USER_QUERY } from '../util/graphql';
 
 import { AuthContext } from '../context/auth'
 // import Signal from '../util/Popup'
@@ -14,21 +11,45 @@ import { AuthContext } from '../context/auth'
 import './style.css'
 
 function Profile(props) {
-  // const username = props.match.params.username;
-   const createdAt = props.match.params.createdAt
+  // const userId = props.match.params.userId;
+  const username = props.match.params.username;
+  // const email = props.match.params.email;
+  //  const createdAt = props.match.params.createdAt
   const { user } = useContext(AuthContext);
 
+  // const {
+  //   data: { getUser } = {}
+  // } = useQuery(FETCH_USER_QUERY, {
+  //   variables: {
+  //     userId
+  //   }
+  // });
 
+  //   const { 
+  //     username,
+  //     email} = getUser;
+ return (
 
-  return (
+  
     <div>
-      <h3>{props.match.params.username} 's profile</h3>
-      <p>{props.match.params.email} </p>
+      <h3> {username}'s profile</h3>
+      {/* <p> {moment(createdAt).fromNow()}</p> */}
+      {/* <p> {email}</p> */}
     </div>
   )
+    
 }
 
-
+ const FETCH_USER_QUERY = gql`
+  query getUser($userId: ID!) {
+    getUser(userId: $userId) {
+      id
+      createdAt
+      username
+      email
+    }
+  }
+`;
 
 
 
