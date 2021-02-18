@@ -24,3 +24,15 @@
       }
     }
   `;
+
+export const FETCH_USERS_QUERY = gql`
+{
+  getUsers {
+    id
+    email
+    createdAt
+    username
+    
+  }
+}
+`;

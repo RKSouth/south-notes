@@ -7,6 +7,7 @@ const { validateRegisterInput,
      } = require('../../util/validators')
 const { SECRET_KEY} = require("../../config");
 const User = require('../../models/User');
+const { argsToArgsConfig } = require('graphql/type/definition');
 
 function generateToken(user){
   return jwt.sign({
@@ -20,6 +21,32 @@ function generateToken(user){
 
 
 module.exports = {
+  Query: {
+    async getUsers() {
+      try{
+        //    in order to srt posts so the latest show up on top and the older ones on the bottom
+        // we just need to sort  by createdAt so instead of:
+        //    const posts = await Post.find();
+        const users = await User.find().sort({createdAt: -1})
+           return users;
+       } catch (err) {
+           throw new Error(err);
+       }
+    },
+       async getUser(_, {userId}){
+        // const user = checkAuth(context);
+           try{
+               const user = await User.findById(userId);
+               if(user){
+                   return user;
+               } else {
+                   throw new Error('Post not found')
+                }
+           } catch(err){
+               throw new Error(err);
+           }
+       }
+  },
     Mutation: {
         //most of the time we will just args as part of the things we can get in our resolver arguments
         // parent gives you the result of what was the input of the last step, in some cases you can have multiple resolvers

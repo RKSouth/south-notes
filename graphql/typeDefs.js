@@ -40,8 +40,10 @@ module.exports = gql`
         email: String!
     }
     type Query {
-       getPosts: [Post]
+       getPosts: [Post!]
        getPost(postId: ID!): Post
+       getUser(userId: ID!): User
+       getUsers: [User]
     }
     type Mutation {
         register(registerInput: RegisterInput): User!
