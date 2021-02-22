@@ -28,7 +28,9 @@ function SinglePost(props) {
       postId
     }
   });
-
+console.log({
+  data: { getPost }
+})
 const [submitComment] = useMutation(SUBMIT_COMMENT_MUTATION, {
   update(){
     setComment('');
@@ -49,7 +51,7 @@ const [submitComment] = useMutation(SUBMIT_COMMENT_MUTATION, {
   let postMarkup;
   if (!getPost) {
     // a spinner here would be cool
-    postMarkup = <p>Loadding post...</p>
+    postMarkup = <p>Loading post...</p>
   } else {
     const { id,
       body,

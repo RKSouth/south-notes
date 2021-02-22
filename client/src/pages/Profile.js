@@ -11,24 +11,39 @@ import { AuthContext } from '../context/auth'
 import './style.css'
 
 function Profile(props) {
-  // const userId = props.match.params.userId;
-  const username = props.match.params.username;
-  // const email = props.match.params.email;
+  const userId = props.match.params.userId;
+  const user = props.match.params.user;
+  // const username = props.match.params.username;
+  const email = props.match.params.email;
   //  const createdAt = props.match.params.createdAt
-  const { user } = useContext(AuthContext);
+  // const { user } = useContext(AuthContext);
+ console.log(userId);
+console.log(email);
 
-  // const {
-  //   data: { getUser } = {}
-  // } = useQuery(FETCH_USER_QUERY, {
-  //   variables: {
-  //     userId
-  //   }
-  // });
 
-  //   const { 
-  //     username,
-  //     email} = getUser;
- return (
+
+  const {
+    data: { getUser } = {}
+  } = useQuery(FETCH_USER_QUERY, {
+    variables: {
+      userId
+     
+    }
+  });
+  console.log({data: { getUser }
+  });
+  let postMarkup;
+  if (!getUser) {
+    // a spinner here would be cool
+    postMarkup = <p>Loading post...</p>
+  } else {
+    const { id,
+   
+      username,
+      email,
+      createdAt } = getUser;
+
+    postMarkup = (
 
   
     <div>
@@ -39,10 +54,12 @@ function Profile(props) {
   )
     
 }
+return postMarkup;
+}
 
  const FETCH_USER_QUERY = gql`
-  query getUser($userId: ID!) {
-    getUser(userId: $userId) {
+  query ($userId: ID!, $username: String, $createdAt:String, $email:String) {
+    getUser(userId: $userId, username: $username, createdAt: $createdAt, email: $email) {
       id
       createdAt
       username

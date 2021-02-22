@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Grid, Menu, Segment } from 'semantic-ui-react'
+import { Grid, Menu } from 'semantic-ui-react'
 import {Link } from 'react-router-dom'
 
 function HomeMenuBar() {
