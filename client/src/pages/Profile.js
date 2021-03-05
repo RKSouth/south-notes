@@ -14,28 +14,28 @@ import './style.css'
 function Profile(props, {user: username, createdAt, id , bio, token}) {
     const  { user, logout } = useContext(AuthContext)
     const context = useContext(AuthContext);
-    const { onChange, onSubmit, values } = useForm(editUserCallback, {
-        username: '',
-        bio: ''
-      });
+    // const { onChange, onSubmit, values } = useForm(editUserCallback, {
+    //     username: '',
+    //     bio: ''
+    //   });
 
-      const [editUser, { loading }] = useMutation(EDIT_USER, {
-        update(
-          _,
-          {
-            data: { editUser: userData }
-          }
-        ) {
-          context.login(userData);
-          props.history.push('/Profile');
-        },
+    //   const [editUser, { loading }] = useMutation(EDIT_USER, {
+    //     update(
+    //       _,
+    //       {
+    //         data: { editUser: userData }
+    //       }
+    //     ) {
+    //       context.login(userData);
+    //       props.history.push('/Profile');
+    //     },
        
-        variables: values
-      });
+    //     variables: values
+    //   });
     
-      function editUserCallback() {
-        editUser();
-      }
+    //   function editUserCallback() {
+    //     editUser();
+    //   }
 
     return (
         <Card fluid >
@@ -50,7 +50,7 @@ function Profile(props, {user: username, createdAt, id , bio, token}) {
           <Card.Description>
           {user && (
               
-              <h1>edit your page</h1>
+              <h3>edit your page</h3>
           )}
           </Card.Description>
         </Card.Content>

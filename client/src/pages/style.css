@@ -19,6 +19,6 @@ p, .ui.text.menu .item, .ui.text.menu .header.item {
     color: rgb(229, 253, 224);
 }
 
-p:hover{
+p,a:hover{
     color: rgb(115, 253, 87);
 }

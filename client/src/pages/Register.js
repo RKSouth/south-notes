@@ -17,7 +17,8 @@ function Register(props) {
     username: '',
     password: '',
     confirmPassword: '',
-    email: ''
+    email: '',
+    bio: ''
   })  
 
 
@@ -59,6 +60,13 @@ function Register(props) {
                 error= {errors.email ? true : false}
                 type="email"
                 onChange={onChange}/>
+                <Form.Input
+                label = "bio"
+                placeholder="A short note about yourself.."
+                name="bio"
+                value= {values.bio}
+                type="text"
+                onChange={onChange}/>
              <Form.Input
                 label = "Password"
                 placeholder="Password.."
@@ -99,6 +107,7 @@ const REGISTER_USER = gql`
     $email: String!
     $password: String!
     $confirmPassword: String!
+    $bio: String!
   ) {
     register(
       registerInput: {
@@ -106,6 +115,7 @@ const REGISTER_USER = gql`
         email: $email
         password: $password
         confirmPassword: $confirmPassword
+        bio: $bio
       }
     ) {
       id
@@ -113,6 +123,7 @@ const REGISTER_USER = gql`
       username
       createdAt
       token
+      bio
     }
   }
 `;
