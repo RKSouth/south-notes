@@ -5,12 +5,18 @@ h1 {
 h2 {
     color: rgb(229, 253, 224);
     box-shadow: 10 10 10 10;
+    
+}
+h3 {
+    color: rgb(229, 253, 224);
+    box-shadow: 10 10 10 10;
 }
 .form-container {
     background-color:rgb(229, 253, 224);
 }
 .ui.card{
    background-color:rgb(229, 253, 224);
+   opacity: .80;
 }
 p, .ui.text.menu .item, .ui.text.menu .header.item {
     color: rgb(229, 253, 224);
@@ -22,3 +28,12 @@ p, .ui.text.menu .item, .ui.text.menu .header.item {
 p,a:hover{
     color: rgb(115, 253, 87);
 }
+
+.ui.form .field>label { 
+
+    color:  rgb(229, 253, 224);
+  }
+
+  ::selection {
+    color:  rgb(179, 219, 171);
+   }

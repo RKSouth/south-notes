@@ -6,12 +6,10 @@ import { AuthContext} from '../context/auth'
 import PostCard from './../components/PostCard'
 import PostForm from './../components/PostForm'
 import { FETCH_POSTS_QUERY } from '../util/graphql'
-import './style.css';
-
 
 function Home() {
     // just signifying if user is signed
-    const { user } =useContext(AuthContext)
+    const { user } = useContext(AuthContext);
 
     // show da posts!
     const { loading, 
@@ -24,6 +22,7 @@ function Home() {
     return (
         <div>
         <div>
+{/* <h1>Home Page</h1> */}
         </div>
         <Grid.Row className="page-title">
             <h1>Recent Posts</h1>  

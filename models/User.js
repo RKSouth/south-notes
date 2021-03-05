@@ -3,12 +3,11 @@
 const { model, Schema } = require('mongoose');
 
 const userSchema = new Schema({
-    username: String,
-    // will handle the require in graphql
-    password: String,
-    email: String,
-    createdAt: String,
-    bio: String
+  username: String,
+  // will handle the require in graphql
+  password: String,
+  email: String,
+  createdAt: String
 });
 
 module.exports = model('User', userSchema);

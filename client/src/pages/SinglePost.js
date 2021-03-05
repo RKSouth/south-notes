@@ -6,6 +6,7 @@ import { Card, Form, Grid, Button, Image, Label, Icon } from 'semantic-ui-react'
 import moment from 'moment';
 import LikeButton from '../components/LikeButton';
 import DeleteButton from '../components/DeleteButton.js';
+import { Link } from 'react-router-dom'
 
 
 import { AuthContext } from '../context/auth'
@@ -48,7 +49,7 @@ const [submitComment] = useMutation(SUBMIT_COMMENT_MUTATION, {
   let postMarkup;
   if (!getPost) {
     // a spinner here would be cool
-    postMarkup = <p>Leading post...</p>
+    postMarkup = <p>Loadding post...</p>
   } else {
     const { id,
       body,
@@ -71,7 +72,7 @@ const [submitComment] = useMutation(SUBMIT_COMMENT_MUTATION, {
           <Grid.Column width={10}>
             <Card fluid >
               <Card.Content>
-                < Card.Header>{username}</Card.Header>
+                < Card.Header as={Link} to={`/Profile/${username}`}>{username}</Card.Header>
                 <Card.Meta>{moment(createdAt).fromNow()}</Card.Meta>
                 <Card.Description>{body}</Card.Description>
               </Card.Content>

@@ -1,16 +1,16 @@
-import React, { useContext, useState} from 'react'
-import { Card, Form, Icon, Label, Button, Image } from 'semantic-ui-react'
-import moment from 'moment'
-import {Link} from "react-router-dom"
+import React, { useContext } from 'react'
+import gql from "graphql-tag"
+import { useQuery } from "@apollo/react-hooks"
+// import { Card, Form, Grid, Button, Image, Label, Icon } from 'semantic-ui-react';
+import moment from 'moment';
+// import { FETCH_USER_QUERY } from '../util/graphql';
+
 import { AuthContext } from '../context/auth'
-import LikeButton from '../components/LikeButton'
-import DeleteButton from '../components/DeleteButton';
-import Signal from '../util/Popup'
-import { useMutation } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
-import { useForm } from '../util/hooks';
+// import Signal from '../util/Popup'
+
 import './style.css'
 
+<<<<<<< HEAD
 function Profile(props, {user: username, createdAt, id , bio, token}) {
     const  { user, logout } = useContext(AuthContext)
     const context = useContext(AuthContext);
@@ -62,28 +62,49 @@ function Profile(props, {user: username, createdAt, id , bio, token}) {
       </Card>
     )
 }
+=======
+function Profile(props) {
+  // const userId = props.match.params.userId;
+  const username = props.match.params.username;
+  // const email = props.match.params.email;
+  //  const createdAt = props.match.params.createdAt
+  const { user } = useContext(AuthContext);
 
-const EDIT_USER = gql`
-  mutation editUser(
-    $username: String!
-    $bio: String!
+  // const {
+  //   data: { getUser } = {}
+  // } = useQuery(FETCH_USER_QUERY, {
+  //   variables: {
+  //     userId
+  //   }
+  // });
 
-  ) {
-    editUser(
-        editUser: {
-        username: $username
-        email: $email
-        bio: $bio
-      }
-    ) {
+  //   const { 
+  //     username,
+  //     email} = getUser;
+ return (
+>>>>>>> b84161ec9f08ecaf1f4d1f24516dd588429ee682
+
+  
+    <div>
+      <h3> {username}'s profile</h3>
+      {/* <p> {moment(createdAt).fromNow()}</p> */}
+      {/* <p> {email}</p> */}
+    </div>
+  )
+    
+}
+
+ const FETCH_USER_QUERY = gql`
+  query getUser($userId: ID!) {
+    getUser(userId: $userId) {
       id
-      email
-      username
       createdAt
-      token
-      bio
+      username
+      email
     }
   }
 `;
 
-export default Profile
+
+
+export default Profile;
