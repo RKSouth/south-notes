@@ -40,7 +40,8 @@ module.exports = {
                if(user){
                    return user;
                } else {
-                   throw new Error('Post not found')
+                   throw new Error('Post not found');
+               
                 }
            } catch(err){
                throw new Error(err);
