@@ -24,10 +24,8 @@ p, .ui.text.menu .item, .ui.text.menu .header.item {
 .ui.text.menu .item {
     color: rgb(229, 253, 224);
 }
-.ui.text.menu .item :focus {
-    color: rgb(115, 253, 87) !important 
-}
-p, a :hover{
+
+p,a:hover{
     color: rgb(115, 253, 87);
 }
 

@@ -10,6 +10,59 @@ import { AuthContext } from '../context/auth'
 
 import './style.css'
 
+<<<<<<< HEAD
+function Profile(props, {user: username, createdAt, id , bio, token}) {
+    const  { user, logout } = useContext(AuthContext)
+    const context = useContext(AuthContext);
+    // const { onChange, onSubmit, values } = useForm(editUserCallback, {
+    //     username: '',
+    //     bio: ''
+    //   });
+
+    //   const [editUser, { loading }] = useMutation(EDIT_USER, {
+    //     update(
+    //       _,
+    //       {
+    //         data: { editUser: userData }
+    //       }
+    //     ) {
+    //       context.login(userData);
+    //       props.history.push('/Profile');
+    //     },
+       
+    //     variables: values
+    //   });
+    
+    //   function editUserCallback() {
+    //     editUser();
+    //   }
+
+    return (
+        <Card fluid >
+        <Card.Content>
+          <Image
+            size='small'
+            src='https://react.semantic-ui.com/images/avatar/large/molly.png'
+          />
+          <hr></hr>
+          <Card.Header  float="right"name={user.username}>{user.username}</Card.Header>
+          <Card.Meta>{user.createdAt}</Card.Meta>
+          <Card.Description>
+          {user && (
+              
+              <h3>edit your page</h3>
+          )}
+          </Card.Description>
+        </Card.Content>
+        <Card.Content extra>
+        <div className="form-container">
+        
+                </div>
+        </Card.Content>
+      </Card>
+    )
+}
+=======
 function Profile(props) {
   const userId = props.match.params.userId;
   // const username = props.match.params.username;
@@ -32,6 +85,7 @@ function Profile(props) {
       username,
       email} = getUser;
  return (
+>>>>>>> b84161ec9f08ecaf1f4d1f24516dd588429ee682
 
   
     <div>
